@@ -1,0 +1,102 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#000;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+:root{
+  --black:#000000;
+  --yellow:#cfff04;
+  --pink:#ff00c1;
+  --cyan:#00ffca;
+}
+
+.page{
+  width:100%;
+  min-height:100vh;
+  background:#000;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero{
+  width:100%;
+  height:100vh;
+  position:relative;
+}
+
+.placeholder{
+  color:#444;
+  font-size:36px;
+  font-weight:bold;
+  letter-spacing:4px;
+}
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:30px 45px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:100;
+}
+
+.logo{
+  font-size:42px;
+  font-weight:900;
+  user-select:none;
+}
+
+.menu{
+  display:flex;
+  gap:35px;
+  font-size:18px;
+  font-weight:600;
+}
+
+.menu a{
+  color:white;
+  transition:.25s;
+}
+
+.menu a:hover{
+  color:var(--yellow);
+}
+
+.active{
+  color:var(--yellow)!important;
+}
+
+.backgroundVideo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}

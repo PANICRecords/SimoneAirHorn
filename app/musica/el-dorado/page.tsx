@@ -140,13 +140,155 @@ export default function ElDoradoPage() {
               name="TIDAL"
               link="https://tidal.com/album/538351374"
             />
-          </div>
-        </div>
+                </div>
+    </div>
+  </div>
+
+  <section
+    style={{
+      maxWidth: "1150px",
+      margin: "0 auto",
+      padding: "0 20px 100px",
+    }}
+  >
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      TESTO
+    </h2>
+
+    <div
+      style={{
+        whiteSpace: "pre-line",
+        lineHeight: "2",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        marginBottom: "80px",
+      }}
+    >
+{`Anche un giorno intero è importante, non spreco nada (wow)
+Quindi col maltempo non resto rinchiuso in casa
+Mi riposerò poi dopo, nell’aldilà
+Che c’ho una missione tosta, ho un percorso e non faccio bla bla
+
+Anche un giorno intero è importante, non spreco nada
+Quindi col maltempo non resto rinchiuso in casa
+Mi riposerò poi dopo, nell’aldilà
+Che c’ho una missione tosta, ho un percorso e non faccio bla bla
+Corro 500 chilometri senza fiato
+So che se non tento non perdo, ma poi che faccio
+La mappa l'ho in testa vado fuori città
+Non fallisco la ricerca, ti giuro trovo El Dorado
+Si scenderò ad El Dorado (no-o-o)
+
+Guarda chi c’hai intorno, sono amici o è una banda?
+Non sai che la gang se muori, lí ti lascia
+Ti darei un consiglio ma non mi frega niente
+Tanto la famiglia l’ho già selezionata (uh, uh)
+Lei che è innamorata me lo dice anche in inglese
+Io insulto due inglesi, si perché l’hanno guardata
+Senti i BPM, me li giostro, sentinelle
+Ma buongiorno gente, nuovo giorno nuova traccia
+Piuttosto non parlo se non devo dire niente
+Chiudi quella bocca perché sta solo arieggiando
+Non chiedermi scusa sai che odio chi si pente
+L’hai fatto lo stesso anche sapendo che lo odiavo
+
+Non volevo un Dior dorato
+Non volevo i soldi solo trovare El Dorado (oh no)
+Con lei in una casa al lago
+Senza alcun rimpianto e felice per tutto l’anno
+
+Anche un giorno intero è importante, non spreco nada
+Quindi col maltempo non resto rinchiuso in casa
+Mi riposerò poi dopo, nell’aldilà
+Che c’ho una missione tosta, ho un percorso e non faccio bla bla
+Corro 500 chilometri senza fiato
+So che se non tento non perdo, ma poi che faccio
+La mappa l'ho in testa vado fuori città
+Non fallisco la ricerca, ti giuro trovo El Dorado
+Si scenderò ad El Dorado
+
+L’hai presa un po’ sottogamba,
+Il troppo sicuro inciampa
+Sei attratto da cose, io sono in gita in montagna
+Siamo a Cinecittà, non cambio la musica è sacra
+Ho così libertà di scelta
+Che potrei pure lasciarla
+Ma ogni piede c’ha la sua scarpa,
+Il cattivo c’ha una taglia
+Non sarò uno schiavo a cui metteranno una targa,
+Proprio come ad una macchina infatti studio una tattica
+Non puoi aver la tunica se poi vivi nell’attico
+
+Non volevo un Dior dorato
+Non volevo i soldi solo trovare El Dorado (oh no)
+Con lei in una casa al lago
+Senza alcun rimpianto e felice per tutto l’anno
+
+Anche un giorno intero è importante, non spreco nada
+Quindi col maltempo non resto rinchiuso in casa
+Mi riposerò poi dopo, nell’aldilà
+Che c’ho una missione tosta, ho un percorso e non faccio bla bla
+Corro 500 chilometri senza fiato
+So che se non tento non perdo, ma poi che faccio
+La mappa l'ho in testa vado fuori città
+Non fallisco la ricerca, ti giuro trovo El Dorado
+Si scenderò ad El Dorado
+
+Si Si Simoneee
+Senti i BPM, me li giostro, sentinelle
+Ma buongiorno gente, nuovo giorno nuova traccia
+Ehh
+Eh`}
+    </div>
+
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      CREDITI
+    </h2>
+
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        lineHeight: "1.8",
+      }}
+    >
+      <div>
+        <strong style={{ color: "#fff" }}>ESEGUITO DA</strong>
+        <br />
+        SimoneAirHorn
       </div>
 
-      <Footer />
-    </main>
-  );
+      <div>
+        <strong style={{ color: "#fff" }}>COMPOSITORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+
+      <div>
+        <strong style={{ color: "#fff" }}>AUTORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</main>  );
 }
 
 function Platform({

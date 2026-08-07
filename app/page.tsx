@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <main className="page">
+    <main>
       <Navbar />
 
       <section className="hero">
@@ -13,6 +13,7 @@ export default function Home() {
           muted
           loop
           playsInline
+          preload="metadata"
         >
           <source src="/videos/home.mp4" type="video/mp4" />
         </video>

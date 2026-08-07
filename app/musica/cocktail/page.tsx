@@ -140,13 +140,168 @@ export default function CocktailPage() {
               name="TIDAL"
               link="https://tidal.com/album/445811918/track/445811919"
             />
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
+
+  <section
+    style={{
+      maxWidth: "1150px",
+      margin: "0 auto",
+      padding: "0 20px 100px",
+    }}
+  >
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      TESTO
+    </h2>
+
+    <div
+      style={{
+        whiteSpace: "pre-line",
+        lineHeight: "2",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        marginBottom: "80px",
+      }}
+    >
+{`Tu mi hai ucciso
+Pure questa notte,
+Bevo e aspiro (bevo e aspiro)
+Oh yeah
+Pure questa notte (oh yeah)
+
+Ma io sarò il primo
+Te l’ho detto al mare con un Co-Cocktail
+Sai non mento avviso così sai già che,
+Se torni piangendo
+Io, manco apro rido
+Io, manco apro rido (ah)
+Ma io sono in giro
+Pure questa notte
+Ti penso e ti scrivo non rispondere
+Che mi illudo sempre
+E tu mi ami a volte,
+Si soltanto a volte
+
+Scoppio il beat e fa boom
+Mamma, quanto sei cool
+Ti porterei in Olanda
+O in Francia
+Dimmi dove vuoi tu
+Ama me non il suv
+Han pompato nel sub
+Il mio disco non il suo,
+Gli dispiace ed è giù
+Siamo rari e son guai
+Dici passeranno i guai
+Tu resta con me non sai
+Che ti penso sempre vedi, baby
+Anche se non so come stai
+È che sei un sogno da life
+Lei invece solo da like
+Sei bella se mi sorridi,
+Quando dico: "Non ci lasceremo mai"
+
+Ma io sarò il primo
+Te l’ho detto al mare con un Co-Cocktail
+Sai non mento avviso così sai già che,
+Se torni piangendo
+Io, manco apro rido,
+Io, manco apro rido (ah)
+Ma io sono in giro
+Pure questa notte
+Ti penso e ti scrivo non rispondere
+Che mi illudo sempre
+E tu mi ami a volte,
+Si soltanto a volte
+
+Urlano sembra il Far West,
+Sogno Punta Cana, ma
+Puntano me
+Non scendo da un po’ in città
+Ma dalla regia
+Dicono che ho le abilità
+Che sarebbe una follia
+Sprecare la mia unica chance
+Ora che sai il perché
+Non siamo scappati da qua
+Se facevo la star
+Non potevo portarti alla spa
+Tu volevi di più, più
+Ma è il mio DNA
+Bevi un cocktail al bar
+
+Te l’ho detto al mare con un Co-Cocktail
+(Te l’ho detto al mare con un Co-Cocktail)
+Ti penso e ti scrivo
+E non mento avviso così sai già che
+(E non mento avviso così sai già che)
+Let's, let's,
+Let's go
+
+Ma io sono in giro
+Pure questa notte
+Ti penso e ti scrivo non rispondere
+Che mi illudo sempre
+E tu mi ami a volte,
+Si soltanto a volte
+
+T-Ti ho fatta stare
+Così male
+Che sei andata via
+Senza salutare,
+Non tornerai più
+Non tornerai mai più`}
+    </div>
+
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      CREDITI
+    </h2>
+
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        lineHeight: "1.8",
+      }}
+    >
+      <div>
+        <strong style={{ color: "#fff" }}>ESEGUITO DA</strong>
+        <br />
+        SimoneAirHorn
       </div>
 
-      <Footer />
-    </main>
-  );
+      <div>
+        <strong style={{ color: "#fff" }}>COMPOSITORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+
+      <div>
+        <strong style={{ color: "#fff" }}>AUTORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</main>  );
 }
 
 function Platform({

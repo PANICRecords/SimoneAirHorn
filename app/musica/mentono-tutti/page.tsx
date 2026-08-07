@@ -140,13 +140,160 @@ export default function MentonoTuttiPage() {
               name="TIDAL"
               link="https://tidal.com/album/428706632/track/428706633"
             />
-          </div>
-        </div>
+                </div>
+    </div>
+  </div>
+
+  <section
+    style={{
+      maxWidth: "1150px",
+      margin: "0 auto",
+      padding: "0 20px 100px",
+    }}
+  >
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      TESTO
+    </h2>
+
+    <div
+      style={{
+        whiteSpace: "pre-line",
+        lineHeight: "2",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        marginBottom: "80px",
+      }}
+    >
+{`Uhh, non mi ama o mi ama?
+Click Clown (Ah)
+Ahh, ahh, ahh, ahh
+
+E non mi parla
+Perchè con me lei è arrabbiata
+Tu cercavi un flow mentre io cercavo un’altra
+Flow ne ho abbastanza
+Che lo spazio non basta
+Qua mentono tutti (uhh)
+Dentro al barrio,
+In chiesa e in centro
+Lo sai che fanno bla bla
+Non mi chiama,
+La chiamo, richiama
+Però dopo riattacca
+
+Contatto Dior
+C’ho una boutique
+Cresce il conto in banca,
+Salgo UP
+Faccio bowling, to bullish
+Piove in Massachu-
+Come in tutti i posti che non è il luogo
+E manco i soldi, sei tu
+E tutti ridono fra qua nessuno piange
+Sinchè non controllano e c’hanno vuote le tasche
+E c’hanno vuote le banche,
+Spesi per i Balmain
+Avevo buchi nei jeans, jeans, jeans,
+Nelle scarpe
+Rubavo per registrare
+Forse hai un brand
+Ma menti a un fra solo per il cash
+Tu cerchi un flow,
+Io la mia ex
+Perchè è ancora incazzata con me
+
+E non mi parla
+Perchè è arrabbiata
+Cercavi un flow mentre io cercavo un’altra
+Flow ne ho abbastanza
+Che lo spazio non basta
+Qua mentono tutti (uhh)
+Dentro al barrio,
+In chiesa e in centro
+Lo sai che fanno bla bla
+Non mi chiama,
+La chiamo, richiama
+Però dopo riattacca
+
+Ahi, non amo
+Fra non voglio un grammy voglio tutto il palco
+Sei sceso col jet io son sceso col cargo
+Non sto nella gara che sennò la sfaso
+Tipo che non voglio essere manco paragonato
+Forse cerco la gloria soltanto per poi mostrarla
+O solo per dimostrare che se voglio posso averla
+Non voglio avere una stella,
+Essere io la stella
+Col ritmo che mi balla
+E dice: "È forte come una roccia"
+
+E non mi parla
+Perchè è arrabbiata
+Cercavi un flow mentre io cercavo un’altra
+Flow ne ho abbastanza
+Che lo spazio non basta
+Qua mentono tutti (uhh)
+Dentro al barrio,
+In chiesa e in centro
+Lo sai che fanno bla bla (Click Clown)
+Non mi chiama,
+La chiamo, richiama
+Però dopo riattacca
+Si - Si, Ah (Click Clown)
+Si - Si - Simoneee
+Non mi ama o mi ama?
+Let's, let's
+Let's go (let's go, let's go)`}
+    </div>
+
+    <h2
+      style={{
+        fontSize: "42px",
+        color: "#cfff04",
+        marginBottom: "35px",
+      }}
+    >
+      CREDITI
+    </h2>
+
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        color: "#d5d5d5",
+        fontSize: "19px",
+        lineHeight: "1.8",
+      }}
+    >
+      <div>
+        <strong style={{ color: "#fff" }}>ESEGUITO DA</strong>
+        <br />
+        SimoneAirHorn
       </div>
 
-      <Footer />
-    </main>
-  );
+      <div>
+        <strong style={{ color: "#fff" }}>COMPOSITORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+
+      <div>
+        <strong style={{ color: "#fff" }}>AUTORE ORIGINALE</strong>
+        <br />
+        Simone Emanuele Melis
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</main>  );
 }
 
 function Platform({

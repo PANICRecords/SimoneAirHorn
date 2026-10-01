@@ -16,48 +16,31 @@ import {
 
 export default function ElDoradoPage() {
   return (
-    <main
-      style={{
-        background: "#000",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+    <main className="page">
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "1150px",
-          margin: "0 auto",
-          paddingTop: "150px",
-          paddingBottom: "100px",
-          display: "flex",
-          gap: "60px",
-          alignItems: "flex-start",
-        }}
-      >
-        <Image
-          src="/images/covers/el-dorado.png"
-          alt="El Dorado"
-          width={320}
-          height={320}
-          priority
-          style={{
-            borderRadius: "18px",
-            objectFit: "cover",
-          }}
-        />
+      {/* INFORMAZIONI BRANO */}
+      <section className="split-layout">
 
-        <div
-          style={{
-            flex: 1,
-          }}
-        >
-          <h1
+        <div className="split-layout__media">
+          <Image
+            src="/images/covers/el-dorado.png"
+            alt="El Dorado"
+            width={320}
+            height={320}
+            priority
             style={{
-              fontSize: "58px",
-              marginBottom: "8px",
+              borderRadius: "18px",
+              objectFit: "cover",
             }}
+          />
+        </div>
+
+        <div className="split-layout__content">
+
+          <h1
+            className="page-title page-title--58"
+            style={{ marginBottom: "8px" }}
           >
             EL DORADO{" "}
             <span
@@ -81,30 +64,47 @@ export default function ElDoradoPage() {
             SimoneAirHorn
           </p>
 
-          <h3 style={titleStyle}>DATA DI USCITA</h3>
+          <h3
+            style={{
+              color: "#cfff04",
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            DATA DI USCITA
+          </h3>
 
-          <p style={textStyle}>24/07/2026</p>
-
-          <h3 style={titleStyle}>ETICHETTA</h3>
-
-          <p style={textStyle}>PANIC Records</p>
+          <p style={{ fontSize: "22px", marginBottom: "28px" }}>
+            24/07/2026
+          </p>
 
           <h3
             style={{
-              ...titleStyle,
+              color: "#cfff04",
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            ETICHETTA
+          </h3>
+
+          <p style={{ fontSize: "22px", marginBottom: "28px" }}>
+            PANIC Records
+          </p>
+
+          <h3
+            style={{
+              color: "#cfff04",
+              fontSize: "18px",
+              marginBottom: "10px",
               marginTop: "45px",
             }}
           >
             ASCOLTA SU
           </h3>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, max-content)",
-              gap: "18px 35px",
-            }}
-          >
+          <div className="platform-grid">
+
             <Platform
               icon={<FaSpotify />}
               name="Spotify"
@@ -140,36 +140,34 @@ export default function ElDoradoPage() {
               name="TIDAL"
               link="https://tidal.com/album/538351374"
             />
-                </div>
-    </div>
-  </div>
 
-  <section
-    style={{
-      maxWidth: "1150px",
-      margin: "0 auto",
-      padding: "0 20px 100px",
-    }}
-  >
-    <h2
-      style={{
-        fontSize: "42px",
-        color: "#cfff04",
-        marginBottom: "35px",
-      }}
-    >
-      TESTO
-    </h2>
+          </div>
+        </div>
+      </section>
 
-    <div
-      style={{
-        whiteSpace: "pre-line",
-        lineHeight: "2",
-        color: "#d5d5d5",
-        fontSize: "19px",
-        marginBottom: "80px",
-      }}
-    >
+      {/* TESTO E CREDITI */}
+      <section
+        className="content-1150"
+        style={{ paddingBottom: "100px" }}
+      >
+
+        <h2
+          className="content-title"
+          style={{
+            color: "#cfff04",
+            marginBottom: "35px",
+          }}
+        >
+          TESTO
+        </h2>
+
+        <div
+          className="body-medium"
+          style={{
+            whiteSpace: "pre-line",
+            marginBottom: "80px",
+          }}
+        >
 {`Anche un giorno intero è importante, non spreco nada (wow)
 Quindi col maltempo non resto rinchiuso in casa
 Mi riposerò poi dopo, nell’aldilà
@@ -245,50 +243,59 @@ Senti i BPM, me li giostro, sentinelle
 Ma buongiorno gente, nuovo giorno nuova traccia
 Ehh
 Eh`}
-    </div>
+        </div>
 
-    <h2
-      style={{
-        fontSize: "42px",
-        color: "#cfff04",
-        marginBottom: "35px",
-      }}
-    >
-      CREDITI
-    </h2>
+        <h2
+          className="content-title"
+          style={{
+            color: "#cfff04",
+            marginBottom: "35px",
+          }}
+        >
+          CREDITI
+        </h2>
 
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-        color: "#d5d5d5",
-        fontSize: "19px",
-        lineHeight: "1.8",
-      }}
-    >
-      <div>
-        <strong style={{ color: "#fff" }}>ESEGUITO DA</strong>
-        <br />
-        SimoneAirHorn
-      </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+            color: "#d5d5d5",
+            fontSize: "19px",
+            lineHeight: "1.8",
+          }}
+        >
 
-      <div>
-        <strong style={{ color: "#fff" }}>COMPOSITORE ORIGINALE</strong>
-        <br />
-        Simone Emanuele Melis
-      </div>
+          <div>
+            <strong style={{ color: "#fff" }}>
+              ESEGUITO DA
+            </strong>
+            <br />
+            SimoneAirHorn
+          </div>
 
-      <div>
-        <strong style={{ color: "#fff" }}>AUTORE ORIGINALE</strong>
-        <br />
-        Simone Emanuele Melis
-      </div>
-    </div>
-  </section>
+          <div>
+            <strong style={{ color: "#fff" }}>
+              COMPOSITORE ORIGINALE
+            </strong>
+            <br />
+            Simone Emanuele Melis
+          </div>
 
-  <Footer />
-</main>  );
+          <div>
+            <strong style={{ color: "#fff" }}>
+              AUTORE ORIGINALE
+            </strong>
+            <br />
+            Simone Emanuele Melis
+          </div>
+
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
 }
 
 function Platform({
@@ -326,14 +333,3 @@ function Platform({
     </a>
   );
 }
-
-const titleStyle = {
-  color: "#cfff04",
-  fontSize: "18px",
-  marginBottom: "10px",
-};
-
-const textStyle = {
-  fontSize: "22px",
-  marginBottom: "28px",
-};

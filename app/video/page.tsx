@@ -22,38 +22,21 @@ export default function VideoPage() {
   ];
 
   return (
-    <main
-      style={{
-        background: "#000",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+    <main className="page">
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          paddingTop: "140px",
-          paddingBottom: "100px",
-        }}
-      >
+      <div className="content-1100 page-content">
+
         <h1
-          style={{
-            fontSize: "60px",
-            marginBottom: "70px",
-            fontWeight: "bold",
-          }}
+          className="page-title"
+          style={{ marginBottom: "70px" }}
         >
           VIDEO
         </h1>
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "35px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "35px" }}
         >
           VIDEO UFFICIALI
         </h2>
@@ -65,6 +48,8 @@ export default function VideoPage() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "20px",
               marginBottom: "25px",
               paddingBottom: "25px",
               borderBottom: "1px solid #222",
@@ -75,6 +60,7 @@ export default function VideoPage() {
                 display: "flex",
                 alignItems: "center",
                 gap: "25px",
+                minWidth: 0,
               }}
             >
               <Image
@@ -82,6 +68,9 @@ export default function VideoPage() {
                 alt={item.nome}
                 width={110}
                 height={110}
+                style={{
+                  flexShrink: 0,
+                }}
               />
 
               <h2
@@ -98,22 +87,13 @@ export default function VideoPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button
-                style={{
-                  background: "#cfff04",
-                  color: "#000",
-                  border: "none",
-                  padding: "14px 34px",
-                  borderRadius: "999px",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                }}
-              >
+              <button className="primary-button">
                 GUARDA ORA
               </button>
             </a>
           </div>
         ))}
+
       </div>
 
       <Footer />

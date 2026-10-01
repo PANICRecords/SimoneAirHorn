@@ -1,102 +1,487 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
-body{
-  width:100%;
-  height:100%;
-  background:#000;
-  color:#fff;
-  overflow-x:hidden;
-  font-family:Arial, Helvetica, sans-serif;
+body {
+  width: 100%;
+  min-height: 100%;
 }
 
-body{
-  background:#000;
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-button{
-  font:inherit;
+button {
+  font: inherit;
 }
 
-:root{
-  --black:#000000;
-  --yellow:#cfff04;
-  --pink:#ff00c1;
-  --cyan:#00ffca;
+
+/* =========================================================
+   COLORI
+========================================================= */
+
+:root {
+  --black: #000000;
+  --yellow: #cfff04;
+  --pink: #ff00c1;
+  --cyan: #00ffca;
 }
 
-.page{
-  width:100%;
-  min-height:100vh;
-  background:#000;
-  position:relative;
-  overflow:hidden;
+
+/* =========================================================
+   STRUTTURA BASE
+========================================================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero{
-  width:100%;
-  height:100vh;
-  position:relative;
+.hero {
+  width: 100%;
+  height: 100vh;
+  position: relative;
 }
 
-.placeholder{
-  color:#444;
-  font-size:36px;
-  font-weight:bold;
-  letter-spacing:4px;
+.placeholder {
+  width: 100%;
+  height: 100%;
 }
 
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:30px 45px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:100;
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
 }
 
-.logo{
-  font-size:42px;
-  font-weight:900;
-  user-select:none;
+.logo {
+  font-size: 42px;
+  font-weight: bold;
 }
 
-.menu{
-  display:flex;
-  gap:35px;
-  font-size:18px;
-  font-weight:600;
+.menu {
+  display: flex;
+  gap: 35px;
+  font-size: 18px;
 }
 
-.menu a{
-  color:white;
-  transition:.25s;
+.menu a {
+  transition: 0.2s ease;
 }
 
-.menu a:hover{
-  color:var(--yellow);
+.menu a:hover {
+  color: var(--yellow);
 }
 
-.active{
-  color:var(--yellow)!important;
+.menu a.active {
+  color: var(--yellow);
 }
 
-.backgroundVideo{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+
+/* =========================================================
+   BACKGROUND VIDEO
+========================================================= */
+
+.backgroundVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   SISTEMA RESPONSIVE COMUNE
+========================================================= */
+
+/* ---------- CONTENITORI ---------- */
+
+.content-900 {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-1100 {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.content-1150 {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.content-1300 {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+/* ---------- PAGINE CON CONTENUTO ---------- */
+
+.page-content {
+  width: 100%;
+  padding-top: 140px;
+  padding-bottom: 100px;
+}
+
+.page-content--150 {
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+
+/* ---------- TITOLI ---------- */
+
+.page-title {
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 1.05;
+}
+
+.page-title--58 {
+  font-size: 58px;
+}
+
+.section-title {
+  color: var(--yellow);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.content-title {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+
+/* ---------- BOTTONI ---------- */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--yellow);
+  color: #000000;
+  border: none;
+  padding: 16px 42px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: scale(1.03);
+}
+
+
+/* ---------- LAYOUT A DUE COLONNE ---------- */
+
+.split-layout {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding-top: 150px;
+  padding-bottom: 100px;
+
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.split-layout__media {
+  width: 320px;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.split-layout__content {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* ---------- COLONNA CENTRATA ---------- */
+
+.center-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 120px;
+}
+
+.center-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.center-stack > img {
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+
+/* ---------- TESTO ---------- */
+
+.body-large {
+  font-size: 22px;
+  line-height: 36px;
+  color: #d5d5d5;
+}
+
+.body-medium {
+  font-size: 19px;
+  line-height: 2;
+  color: #d5d5d5;
+}
+
+
+/* ---------- RIGHE DI ICONE ---------- */
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.icon-row--social {
+  margin-top: 28px;
+  font-size: 26px;
+}
+
+.icon-row--platforms {
+  margin-top: 20px;
+  font-size: 26px;
+}
+
+
+/* ---------- GRID GENERICHE ---------- */
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 18px 35px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- CONTENITORI ---------- */
+
+  .content-900,
+  .content-1100,
+  .content-1150,
+  .content-1300 {
+    width: 100%;
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  /* ---------- PAGINE ---------- */
+
+  .page-content,
+  .page-content--150 {
+    padding-top: 110px;
+    padding-bottom: 70px;
+  }
+
+
+  /* ---------- TITOLI ---------- */
+
+  .page-title {
+    font-size: clamp(38px, 10vw, 52px);
+    line-height: 1.05;
+  }
+
+  .page-title--58 {
+    font-size: clamp(38px, 10vw, 52px);
+  }
+
+  .section-title {
+    font-size: 21px;
+  }
+
+  .content-title {
+    font-size: 32px;
+  }
+
+
+  /* ---------- BOTTONI ---------- */
+
+  .primary-button {
+    padding: 14px 34px;
+    font-size: 16px;
+  }
+
+
+  /* ---------- DUE COLONNE ---------- */
+
+  .split-layout {
+    width: 100%;
+    max-width: none;
+    padding: 110px 20px 70px;
+
+    flex-direction: column;
+    gap: 45px;
+    align-items: center;
+  }
+
+  .split-layout__media {
+    width: 100%;
+  }
+
+  .split-layout__content {
+    width: 100%;
+    text-align: center;
+  }
+
+
+  /* ---------- COLONNA CENTRATA ---------- */
+
+  .center-page {
+    min-height: auto;
+    padding: 120px 20px 70px;
+  }
+
+  .center-stack {
+    width: 100%;
+  }
+
+  .center-stack > img {
+    width: min(80vw, 300px);
+    height: auto;
+  }
+
+  .center-stack h1 {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+
+  /* ---------- TESTO ---------- */
+
+  .body-large {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .body-medium {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+
+  /* ---------- ICONE ---------- */
+
+  .icon-row {
+    gap: 16px;
+  }
+
+  .icon-row--social,
+  .icon-row--platforms {
+    font-size: 24px;
+  }
+
+
+  /* ---------- GRID ---------- */
+
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+  }
+}
+
+
+/* =========================================================
+   MOBILE PICCOLO
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .content-900,
+  .content-1100,
+  .content-1150,
+  .content-1300 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .split-layout {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .center-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

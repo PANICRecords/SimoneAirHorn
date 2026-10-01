@@ -27,6 +27,7 @@ export default function Navbar() {
     { nome: "ARTISTI", href: "/artisti" },
     { nome: "MUSICA", href: "/musica" },
     { nome: "VIDEO", href: "/video" },
+    { nome: "MERCH", href: "/merch" },
     { nome: "CONTATTI", href: "/contatti" },
   ];
 

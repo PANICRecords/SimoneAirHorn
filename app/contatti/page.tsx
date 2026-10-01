@@ -3,29 +3,14 @@ import Footer from "../../components/Footer";
 
 export default function ContattiPage() {
   return (
-    <main
-      style={{
-        background: "#000",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+    <main className="page">
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          paddingTop: "140px",
-          paddingBottom: "100px",
-        }}
-      >
+      <div className="content-900 page-content">
+
         <h1
-          style={{
-            fontSize: "60px",
-            marginBottom: "80px",
-            fontWeight: "bold",
-          }}
+          className="page-title"
+          style={{ marginBottom: "80px" }}
         >
           CONTATTI
         </h1>
@@ -33,10 +18,8 @@ export default function ContattiPage() {
         {/* BOOKING */}
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "18px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "18px" }}
         >
           BOOKING & MANAGEMENT
         </h2>
@@ -52,19 +35,13 @@ export default function ContattiPage() {
           events.panicrecords@gmail.com
         </a>
 
-        <div
-          style={{
-            height: "70px",
-          }}
-        />
+        <div style={{ height: "70px" }} />
 
         {/* LABEL */}
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "18px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "18px" }}
         >
           LABEL
         </h2>
@@ -79,7 +56,9 @@ export default function ContattiPage() {
         >
           panicrecords13@gmail.com
         </a>
+
       </div>
+
       <Footer />
     </main>
   );

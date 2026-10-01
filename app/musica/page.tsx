@@ -28,29 +28,14 @@ export default function MusicaPage() {
   ];
 
   return (
-    <main
-      style={{
-        background: "#000",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+    <main className="page">
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "1300px",
-          margin: "0 auto",
-          paddingTop: "140px",
-          paddingBottom: "100px",
-        }}
-      >
+      <div className="content-1300 page-content">
+
         <h1
-          style={{
-            fontSize: "60px",
-            marginBottom: "70px",
-            fontWeight: "bold",
-          }}
+          className="page-title"
+          style={{ marginBottom: "70px" }}
         >
           MUSICA
         </h1>
@@ -58,10 +43,8 @@ export default function MusicaPage() {
         {/* NUOVA USCITA */}
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "30px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "30px" }}
         >
           NUOVA USCITA
         </h2>
@@ -73,6 +56,7 @@ export default function MusicaPage() {
             gap: "45px",
             marginBottom: "100px",
           }}
+          className="feature-release"
         >
           <Link href="/musica/el-dorado">
             <Image
@@ -87,13 +71,7 @@ export default function MusicaPage() {
           </Link>
 
           <div>
-            <Link
-              href="/musica/el-dorado"
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
+            <Link href="/musica/el-dorado">
               <h2
                 style={{
                   fontSize: "54px",
@@ -105,17 +83,7 @@ export default function MusicaPage() {
             </Link>
 
             <Link href="/musica/el-dorado">
-              <button
-                style={{
-                  background: "#cfff04",
-                  color: "#000",
-                  border: "none",
-                  padding: "16px 42px",
-                  borderRadius: "999px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-              >
+              <button className="primary-button">
                 ESPLORA
               </button>
             </Link>
@@ -125,21 +93,15 @@ export default function MusicaPage() {
         {/* SINGOLI */}
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "30px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "30px" }}
         >
           SINGOLI
         </h2>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-            gap: "35px",
-            marginBottom: "90px",
-          }}
+          className="responsive-grid"
+          style={{ marginBottom: "90px" }}
         >
           {singoli.map((song) => (
             <div
@@ -156,17 +118,13 @@ export default function MusicaPage() {
                   height={240}
                   style={{
                     cursor: "pointer",
+                    maxWidth: "100%",
+                    height: "auto",
                   }}
                 />
               </Link>
 
-              <Link
-                href={song.link}
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
+              <Link href={song.link}>
                 <h3
                   style={{
                     marginTop: "18px",
@@ -184,10 +142,8 @@ export default function MusicaPage() {
         {/* EP */}
 
         <h2
-          style={{
-            color: "#cfff04",
-            marginBottom: "30px",
-          }}
+          className="section-title"
+          style={{ marginBottom: "30px" }}
         >
           EP
         </h2>
@@ -195,6 +151,7 @@ export default function MusicaPage() {
         <div
           style={{
             width: "240px",
+            maxWidth: "100%",
             textAlign: "center",
           }}
         >
@@ -206,17 +163,13 @@ export default function MusicaPage() {
               height={240}
               style={{
                 cursor: "pointer",
+                maxWidth: "100%",
+                height: "auto",
               }}
             />
           </Link>
 
-          <Link
-            href="/musica/up"
-            style={{
-              textDecoration: "none",
-              color: "white",
-            }}
-          >
+          <Link href="/musica/up">
             <h3
               style={{
                 marginTop: "18px",
@@ -228,6 +181,7 @@ export default function MusicaPage() {
             </h3>
           </Link>
         </div>
+
       </div>
 
       <Footer />

@@ -23,6 +23,7 @@ export default function UpPage() {
       <section className="split-layout">
 
         <div className="split-layout__media">
+
           <Image
             src="/images/covers/up/up.png"
             alt="UP"
@@ -34,6 +35,128 @@ export default function UpPage() {
               objectFit: "cover",
             }}
           />
+
+          {/* TRACKLIST */}
+          <div
+            style={{
+              width: "320px",
+              maxWidth: "100%",
+              marginTop: "35px",
+            }}
+          >
+            <h3
+              style={{
+                color: "#cfff04",
+                fontSize: "18px",
+                marginBottom: "15px",
+              }}
+            >
+              TRACKLIST
+            </h3>
+
+            <div
+              style={{
+                borderTop: "1px solid #222",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  padding: "14px 0",
+                  borderBottom: "1px solid #222",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#888",
+                    fontSize: "16px",
+                    minWidth: "25px",
+                  }}
+                >
+                  01
+                </span>
+
+                <span style={{ fontSize: "19px" }}>
+                  Flexo
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  padding: "14px 0",
+                  borderBottom: "1px solid #222",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#888",
+                    fontSize: "16px",
+                    minWidth: "25px",
+                  }}
+                >
+                  02
+                </span>
+
+                <span style={{ fontSize: "19px" }}>
+                  Cortina d'Ampezzo
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  padding: "14px 0",
+                  borderBottom: "1px solid #222",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#888",
+                    fontSize: "16px",
+                    minWidth: "25px",
+                  }}
+                >
+                  03
+                </span>
+
+                <span style={{ fontSize: "19px" }}>
+                  Panico
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  padding: "14px 0",
+                  borderBottom: "1px solid #222",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#888",
+                    fontSize: "16px",
+                    minWidth: "25px",
+                  }}
+                >
+                  04
+                </span>
+
+                <span style={{ fontSize: "19px" }}>
+                  UP
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div className="split-layout__content">
@@ -142,7 +265,9 @@ export default function UpPage() {
             />
 
           </div>
+
         </div>
+
       </section>
 
       <Footer />

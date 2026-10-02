@@ -12,7 +12,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const update = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Mobile:
+      // - smartphone
+      // - tablet in verticale
+      const mobile =
+        width <= 768 || (width <= 1024 && height > width);
+
+      setIsMobile(mobile);
     };
 
     update();
@@ -47,10 +56,12 @@ export default function Navbar() {
           top: 0,
           left: 0,
           right: 0,
+          height: isMobile ? "70px" : "90px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: isMobile ? "18px 20px" : "25px 40px",
+          padding: isMobile ? "0 20px" : "0 40px",
+          boxSizing: "border-box",
           background: "rgba(0,0,0,.70)",
           backdropFilter: "blur(12px)",
           zIndex: 999,
@@ -61,40 +72,20 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "14px",
             textDecoration: "none",
           }}
         >
-          <span
-            style={{
-              color: "#cfff04",
-              fontWeight: 900,
-              fontSize: isMobile ? "26px" : "42px",
-            }}
-          >
-            PANIC
-          </span>
-
-          <span
-            style={{
-              fontWeight: 900,
-              fontSize: isMobile ? "26px" : "42px",
-            }}
-          >
-            <span style={{ color: "#cfff04" }}>R</span>
-            <span style={{ color: "#00ffca" }}>E</span>
-            <span style={{ color: "#ff00c1" }}>C</span>
-            <span style={{ color: "#cfff04" }}>O</span>
-            <span style={{ color: "#00ffca" }}>R</span>
-            <span style={{ color: "#ff00c1" }}>D</span>
-            <span style={{ color: "#cfff04" }}>S</span>
-          </span>
-
           <Image
-            src="/images/logo.png"
+            src="/images/scritta-navbar.png"
             alt="PANIC Records"
-            width={isMobile ? 30 : 40}
-            height={isMobile ? 30 : 40}
+            width={400}
+            height={67}
+            priority
+            style={{
+              width: isMobile ? "280px" : "400px",
+              height: "auto",
+              objectFit: "contain",
+            }}
           />
         </Link>
 

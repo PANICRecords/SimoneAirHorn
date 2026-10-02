@@ -7,7 +7,14 @@ export default function MerchPage() {
     <main className="page">
       <Navbar />
 
-      <section className="center-page">
+      <section
+        className="center-page"
+        style={{
+          minHeight: "calc(100vh - 90px)",
+          boxSizing: "border-box",
+          paddingBottom: "120px",
+        }}
+      >
         <div className="center-stack">
           <Image
             src="/images/sito-in-lavorazione.png"

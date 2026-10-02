@@ -6,8 +6,14 @@ export default function ContattiPage() {
     <main className="page">
       <Navbar />
 
-      <div className="content-900 page-content">
-
+      <div
+        className="content-900 page-content"
+        style={{
+          minHeight: "calc(100vh - 90px)",
+          boxSizing: "border-box",
+          paddingBottom: "120px",
+        }}
+      >
         <h1
           className="page-title"
           style={{ marginBottom: "80px" }}
@@ -56,7 +62,6 @@ export default function ContattiPage() {
         >
           panicrecords13@gmail.com
         </a>
-
       </div>
 
       <Footer />

@@ -1,32 +1,40 @@
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "../../components/Footer";
 
 export default function VideoPage() {
   const video = [
     {
-      nome: "Cocktail",
-      cover: "cocktail",
-      link: "https://www.youtube.com/watch?v=gpfe1Ol9WlE&feature=youtu.be",
-    },
-    {
       nome: "Dolce",
       cover: "dolce",
-      link: "https://www.youtube.com/watch?v=DA_JW1Bg_eY",
+      data: "2026-01-02",
+      musica: "/musica/dolce",
+      youtube: "https://www.youtube.com/watch?v=DA_JW1Bg_eY",
+    },
+    {
+      nome: "Cocktail",
+      cover: "cocktail",
+      data: "2025-07-18",
+      musica: "/musica/cocktail",
+      youtube:
+        "https://www.youtube.com/watch?v=gpfe1Ol9WlE&feature=youtu.be",
     },
     {
       nome: "Mentono Tutti",
       cover: "mentono-tutti",
-      link: "https://youtube.com/watch?v=t3WuU6wO4DI&feature=youtu.be",
+      data: "2025-05-02",
+      musica: "/musica/mentono-tutti",
+      youtube:
+        "https://youtube.com/watch?v=t3WuU6wO4DI&feature=youtu.be",
     },
-  ];
+  ].sort((a, b) => b.data.localeCompare(a.data));
 
   return (
     <main className="page">
       <Navbar />
 
       <div className="content-1100 page-content">
-
         <h1
           className="page-title"
           style={{ marginBottom: "70px" }}
@@ -63,15 +71,18 @@ export default function VideoPage() {
                 minWidth: 0,
               }}
             >
-              <Image
-                src={`/images/covers/${item.cover}.png`}
-                alt={item.nome}
-                width={110}
-                height={110}
-                style={{
-                  flexShrink: 0,
-                }}
-              />
+              <Link href={item.musica}>
+                <Image
+                  src={`/images/covers/${item.cover}.png`}
+                  alt={item.nome}
+                  width={110}
+                  height={110}
+                  style={{
+                    flexShrink: 0,
+                    cursor: "pointer",
+                  }}
+                />
+              </Link>
 
               <h2
                 style={{
@@ -83,7 +94,7 @@ export default function VideoPage() {
             </div>
 
             <a
-              href={item.link}
+              href={item.youtube}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -93,7 +104,6 @@ export default function VideoPage() {
             </a>
           </div>
         ))}
-
       </div>
 
       <Footer />

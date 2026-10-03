@@ -35,12 +35,6 @@ export default function VideoPage() {
       <Navbar />
 
       <div className="content-1100 page-content">
-        <h1
-          className="page-title"
-          style={{ marginBottom: "70px" }}
-        >
-          VIDEO
-        </h1>
 
         <h2
           className="section-title"

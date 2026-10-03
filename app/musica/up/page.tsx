@@ -1,6 +1,12 @@
+"use client";
+
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
+import { canzoni as albumData } from "../../../components/albumData";
 
 import {
   FaSpotify,
@@ -15,6 +21,38 @@ import {
 } from "react-icons/si";
 
 export default function UpPage() {
+  const pathname = usePathname();
+
+  const suggeriti = useMemo(() => {
+    const disponibili = albumData.filter(
+      (album) => album.link !== pathname
+    );
+
+    const ordinate = [...disponibili].sort(
+      (a, b) => b.data.localeCompare(a.data)
+    );
+
+    const ultimaUscita = ordinate[0];
+
+    if (!ultimaUscita) {
+      return [];
+    }
+
+    const altre = ordinate.filter(
+      (album) => album.link !== ultimaUscita.link
+    );
+
+    const casuali = [...altre]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2);
+
+    return [
+      casuali[0],
+      ultimaUscita,
+      casuali[1],
+    ].filter(Boolean);
+  }, [pathname]);
+
   return (
     <main className="page">
       <Navbar />
@@ -268,6 +306,70 @@ export default function UpPage() {
 
         </div>
 
+      </section>
+
+      <section
+        className="content-1150"
+        style={{
+          paddingBottom: "100px",
+        }}
+      >
+        <h2
+          className="content-title"
+          style={{
+            color: "#cfff04",
+            marginBottom: "35px",
+          }}
+        >
+          SCOPRI ANCHE
+        </h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            gap: "clamp(10px, 3vw, 35px)",
+            width: "100%",
+          }}
+        >
+          {suggeriti.map((album) => (
+            <Link
+              key={album.link}
+              href={album.link}
+              style={{
+                color: "white",
+                textDecoration: "none",
+                textAlign: "center",
+                minWidth: 0,
+              }}
+            >
+              <Image
+                src={`/images/covers/${album.cover}.png`}
+                alt={album.nome}
+                width={350}
+                height={350}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "1 / 1",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+
+              <h3
+                style={{
+                  marginTop: "14px",
+                  fontSize: "clamp(13px, 2.2vw, 22px)",
+                  lineHeight: "1.2",
+                  overflowWrap: "break-word",
+                }}
+              >
+                {album.nome}
+              </h3>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <Footer />

@@ -29,9 +29,9 @@ export default function MusicaPage() {
 
   const singoli = [
     {
-      nome: "Cocktail",
-      cover: "cocktail",
-      link: "/musica/cocktail",
+      nome: "El Dorado",
+      cover: "el-dorado",
+      link: "/musica/el-dorado",
     },
     {
       nome: "Dolce",
@@ -39,9 +39,9 @@ export default function MusicaPage() {
       link: "/musica/dolce",
     },
     {
-      nome: "El Dorado",
-      cover: "el-dorado",
-      link: "/musica/el-dorado",
+      nome: "Cocktail",
+      cover: "cocktail",
+      link: "/musica/cocktail",
     },
     {
       nome: "Mentono Tutti",
@@ -55,13 +55,6 @@ export default function MusicaPage() {
       <Navbar />
 
       <div className="content-1300 page-content">
-
-        <h1
-          className="page-title"
-          style={{ marginBottom: "70px" }}
-        >
-          MUSICA
-        </h1>
 
         {/* NUOVA USCITA */}
 
@@ -77,9 +70,10 @@ export default function MusicaPage() {
           style={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "flex-start" : "center",
+            alignItems: "center",
             gap: isMobile ? "25px" : "45px",
             marginBottom: "70px",
+            textAlign: isMobile ? "center" : "left",
           }}
         >
           <Link href="/musica/el-dorado">
@@ -127,16 +121,17 @@ export default function MusicaPage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "25px",
-            flexWrap: "wrap",
+            gap: isMobile ? "10px" : "25px",
+            flexWrap: "nowrap",
+            whiteSpace: "nowrap",
           }}
         >
           <span
             style={{
-              fontSize: "18px",
+              fontSize: isMobile ? "15px" : "18px",
               fontWeight: "bold",
-              letterSpacing: "1px",
-              marginRight: "5px",
+              letterSpacing: isMobile ? "0.5px" : "1px",
+              marginRight: isMobile ? "0" : "5px",
             }}
           >
             ORDINA PER
@@ -154,10 +149,10 @@ export default function MusicaPage() {
                   ? "#000"
                   : "#fff",
               border: "1px solid #cfff04",
-              padding: "10px 22px",
-              fontSize: "16px",
+              padding: isMobile ? "8px 12px" : "10px 22px",
+              fontSize: isMobile ? "13px" : "16px",
               fontWeight: "bold",
-              letterSpacing: "1px",
+              letterSpacing: isMobile ? "0.5px" : "1px",
               cursor: "pointer",
               transition: "0.25s",
             }}
@@ -177,10 +172,10 @@ export default function MusicaPage() {
                   ? "#000"
                   : "#fff",
               border: "1px solid #cfff04",
-              padding: "10px 22px",
-              fontSize: "16px",
+              padding: isMobile ? "8px 12px" : "10px 22px",
+              fontSize: isMobile ? "13px" : "16px",
               fontWeight: "bold",
-              letterSpacing: "1px",
+              letterSpacing: isMobile ? "0.5px" : "1px",
               cursor: "pointer",
               transition: "0.25s",
             }}
@@ -297,7 +292,7 @@ export default function MusicaPage() {
               className="section-title"
               style={{ marginBottom: "30px" }}
             >
-              ALBUM
+              ALBUM & EP
             </h2>
 
             <div

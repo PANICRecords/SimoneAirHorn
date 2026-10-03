@@ -1,6 +1,12 @@
+"use client";
+
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { canzoni } from "../../../components/musicData";
 
 import {
   FaSpotify,
@@ -15,6 +21,32 @@ import {
 } from "react-icons/si";
 
 export default function CocktailPage() {
+  const pathname = usePathname();
+
+  const disponibili = canzoni.filter(
+    (canzone) => canzone.link !== pathname
+  );
+
+  const ordinate = [...disponibili].sort(
+    (a, b) => b.data.localeCompare(a.data)
+  );
+
+  const ultimaUscita = ordinate[0];
+
+  const altre = ordinate.filter(
+    (canzone) => canzone.link !== ultimaUscita.link
+  );
+
+  const casuali = [...altre]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 2);
+
+  const suggerite = [
+    casuali[0],
+    ultimaUscita,
+    casuali[1],
+  ].filter(Boolean);
+
   return (
     <main className="page">
       <Navbar />
@@ -293,6 +325,7 @@ Non tornerai mai più`}
             lineHeight: "1.8",
           }}
         >
+
           <div>
             <strong style={{ color: "#fff" }}>
               ESEGUITO DA
@@ -316,6 +349,79 @@ Non tornerai mai più`}
             <br />
             Simone Emanuele Melis
           </div>
+
+        </div>
+
+      </section>
+
+      {/* SCOPRI ANCHE */}
+
+      <section
+        className="content-1150"
+        style={{
+          paddingBottom: "100px",
+        }}
+      >
+
+        <h2
+          className="content-title"
+          style={{
+            color: "#cfff04",
+            marginBottom: "35px",
+          }}
+        >
+          SCOPRI ANCHE
+        </h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            gap: "clamp(10px, 3vw, 35px)",
+            width: "100%",
+          }}
+        >
+
+          {suggerite.map((canzone) => (
+            <Link
+              key={canzone.link}
+              href={canzone.link}
+              style={{
+                color: "white",
+                textDecoration: "none",
+                textAlign: "center",
+                minWidth: 0,
+              }}
+            >
+
+              <Image
+                src={`/images/covers/${canzone.cover}.png`}
+                alt={canzone.nome}
+                width={350}
+                height={350}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "1 / 1",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+
+              <h3
+                style={{
+                  marginTop: "14px",
+                  fontSize: "clamp(13px, 2.2vw, 22px)",
+                  lineHeight: "1.2",
+                  overflowWrap: "break-word",
+                }}
+              >
+                {canzone.nome}
+              </h3>
+
+            </Link>
+          ))}
+
         </div>
 
       </section>

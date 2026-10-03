@@ -22,7 +22,7 @@ export default function ArtistiPage() {
             SIMONEAIRHORN
           </h1>
 
-          <Link href="/artisti/simoneairhorn">
+          <Link href="/404work">
             <button className="primary-button">
               SCOPRI
             </button>

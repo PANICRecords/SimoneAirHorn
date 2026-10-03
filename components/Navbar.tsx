@@ -9,6 +9,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [workSection, setWorkSection] = useState<string | null>(null);
 
   useEffect(() => {
     const update = () => {
@@ -31,6 +32,19 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  useEffect(() => {
+    if (pathname === "/404work") {
+      const savedSection = sessionStorage.getItem("panic-404-section");
+
+      if (savedSection) {
+        setWorkSection(savedSection);
+      }
+    } else {
+      setWorkSection(null);
+      sessionStorage.removeItem("panic-404-section");
+    }
+  }, [pathname]);
+
   const menu = [
     { nome: "HOME", href: "/" },
     { nome: "ARTISTI", href: "/artisti" },
@@ -40,12 +54,28 @@ export default function Navbar() {
     { nome: "CONTATTI", href: "/contatti" },
   ];
 
-  function isActive(href: string) {
-    if (href === "/") {
+  function handleNavigation(item: { nome: string; href: string }) {
+    if (item.href === "/404work") {
+      sessionStorage.setItem("panic-404-section", item.nome);
+      setWorkSection(item.nome);
+    } else {
+      sessionStorage.removeItem("panic-404-section");
+      setWorkSection(null);
+    }
+
+    setOpen(false);
+  }
+
+  function isActive(item: { nome: string; href: string }) {
+    if (item.href === "/404work") {
+      return pathname === "/404work" && workSection === item.nome;
+    }
+
+    if (item.href === "/") {
       return pathname === "/";
     }
 
-    return pathname.startsWith(href);
+    return pathname.startsWith(item.href);
   }
 
   return (
@@ -74,6 +104,7 @@ export default function Navbar() {
             alignItems: "center",
             textDecoration: "none",
           }}
+          onClick={() => handleNavigation({ nome: "HOME", href: "/" })}
         >
           <Image
             src="/images/scritta-navbar.png"
@@ -98,10 +129,11 @@ export default function Navbar() {
           >
             {menu.map((item) => (
               <Link
-                key={item.href}
+                key={`${item.nome}-${item.href}`}
                 href={item.href}
+                onClick={() => handleNavigation(item)}
                 style={{
-                  color: isActive(item.href) ? "#cfff04" : "white",
+                  color: isActive(item) ? "#cfff04" : "white",
                   textDecoration: "none",
                   fontWeight: "bold",
                   fontSize: "18px",
@@ -111,7 +143,7 @@ export default function Navbar() {
                   e.currentTarget.style.color = "#cfff04";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isActive(item.href)
+                  e.currentTarget.style.color = isActive(item)
                     ? "#cfff04"
                     : "white";
                 }}
@@ -174,11 +206,11 @@ export default function Navbar() {
 
           {menu.map((item) => (
             <Link
-              key={item.href}
+              key={`${item.nome}-${item.href}`}
               href={item.href}
-              onClick={() => setOpen(false)}
+              onClick={() => handleNavigation(item)}
               style={{
-                color: isActive(item.href) ? "#cfff04" : "white",
+                color: isActive(item) ? "#cfff04" : "white",
                 textDecoration: "none",
                 fontSize: "30px",
                 fontWeight: "bold",

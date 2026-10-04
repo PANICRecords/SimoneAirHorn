@@ -42,14 +42,10 @@ export default function UpPage() {
       (album) => album.link !== ultimaUscita.link
     );
 
-    const casuali = [...altre]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
-
     return [
-      casuali[0],
+      altre[0],
       ultimaUscita,
-      casuali[1],
+      altre[1],
     ].filter(Boolean);
   }, [pathname]);
 

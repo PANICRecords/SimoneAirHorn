@@ -5,6 +5,7 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { canzoni } from "../../../components/musicData";
 
@@ -23,29 +24,38 @@ import {
 export default function CocktailPage() {
   const pathname = usePathname();
 
-  const disponibili = canzoni.filter(
-    (canzone) => canzone.link !== pathname
-  );
+  const [suggerite, setSuggerite] = useState<any[]>([]);
 
-  const ordinate = [...disponibili].sort(
-    (a, b) => b.data.localeCompare(a.data)
-  );
+  useEffect(() => {
+    const disponibili = canzoni.filter(
+      (canzone) => canzone.link !== pathname
+    );
 
-  const ultimaUscita = ordinate[0];
+    const ordinate = [...disponibili].sort(
+      (a, b) => b.data.localeCompare(a.data)
+    );
 
-  const altre = ordinate.filter(
-    (canzone) => canzone.link !== ultimaUscita.link
-  );
+    const ultimaUscita = ordinate[0];
 
-  const casuali = [...altre]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 2);
+    if (!ultimaUscita) {
+      setSuggerite([]);
+      return;
+    }
 
-  const suggerite = [
-    casuali[0],
-    ultimaUscita,
-    casuali[1],
-  ].filter(Boolean);
+    const altre = ordinate.filter(
+      (canzone) => canzone.link !== ultimaUscita.link
+    );
+
+    const casuali = [...altre]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2);
+
+    setSuggerite([
+      casuali[0],
+      ultimaUscita,
+      casuali[1],
+    ].filter(Boolean));
+  }, [pathname]);
 
   return (
     <main className="page">
@@ -83,7 +93,7 @@ export default function CocktailPage() {
                 fontWeight: "normal",
               }}
             >
-              (Singolo)
+              
             </span>
           </h1>
 

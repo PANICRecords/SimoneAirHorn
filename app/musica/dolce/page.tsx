@@ -5,7 +5,7 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { canzoni } from "../../../components/musicData";
 
 import {
@@ -22,8 +22,9 @@ import {
 
 export default function DolcePage() {
   const pathname = usePathname();
+  const [suggerite, setSuggerite] = useState<any[]>([]);
 
-  const suggerite = useMemo(() => {
+  useEffect(() => {
     const disponibili = canzoni.filter(
       (canzone) => canzone.link !== pathname
     );
@@ -35,7 +36,8 @@ export default function DolcePage() {
     const ultimaUscita = ordinate[0];
 
     if (!ultimaUscita) {
-      return [];
+      setSuggerite([]);
+      return;
     }
 
     const altre = ordinate.filter(
@@ -46,11 +48,11 @@ export default function DolcePage() {
       .sort(() => Math.random() - 0.5)
       .slice(0, 2);
 
-    return [
+    setSuggerite([
       casuali[0],
       ultimaUscita,
       casuali[1],
-    ].filter(Boolean);
+    ].filter(Boolean));
   }, [pathname]);
 
   return (
@@ -89,7 +91,7 @@ export default function DolcePage() {
                 fontWeight: "normal",
               }}
             >
-              (Singolo)
+              
             </span>
           </h1>
 

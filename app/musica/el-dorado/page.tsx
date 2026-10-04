@@ -5,7 +5,7 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { canzoni } from "../../../components/musicData";
 
 import {
@@ -22,7 +22,40 @@ import {
 
 export default function ElDoradoPage() {
   const pathname = usePathname();
+  const [suggerite, setSuggerite] = useState<any[]>([]);
 
+  useEffect(() => {
+    const disponibili = canzoni.filter(
+      (canzone) => canzone.link !== pathname
+    );
+
+    const ordinate = [...disponibili].sort(
+      (a, b) => b.data.localeCompare(a.data)
+    );
+
+    const ultimaUscita = ordinate[0];
+
+    if (!ultimaUscita) {
+      setSuggerite([]);
+      return;
+    }
+
+    const altre = ordinate.filter(
+      (canzone) => canzone.link !== ultimaUscita.link
+    );
+
+    const casuali = [...altre]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2);
+
+    setSuggerite([
+      casuali[0],
+      ultimaUscita,
+      casuali[1],
+    ].filter(Boolean));
+  }, [pathname]);
+
+  /*
   const suggerite = useMemo(() => {
     const disponibili = canzoni.filter(
       (canzone) => canzone.link !== pathname
@@ -52,6 +85,7 @@ export default function ElDoradoPage() {
       casuali[1],
     ].filter(Boolean);
   }, [pathname]);
+  */
 
   return (
     <main className="page">
@@ -88,7 +122,7 @@ export default function ElDoradoPage() {
                 fontWeight: "normal",
               }}
             >
-              (Singolo)
+              
             </span>
           </h1>
 

@@ -6,8 +6,17 @@ export default function ContattiPage() {
     <main className="page">
       <Navbar />
 
+      <style>{`
+        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+          .contatti-content {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+      `}</style>
+
       <div
-        className="content-900 page-content"
+        className="content-900 page-content contatti-content"
         style={{
           minHeight: "calc(100vh - 90px)",
           boxSizing: "border-box",
@@ -31,25 +40,25 @@ export default function ContattiPage() {
         </h2>
 
         <a
-          href="mailto:events.panicrecords@gmail.com"
+          href="mailto:mgmt@simoneairhorn.com"
           style={{
             color: "white",
             fontSize: "24px",
             textDecoration: "none",
           }}
         >
-          events.panicrecords@gmail.com
+          mgmt@simoneairhorn.com
         </a>
 
         <div style={{ height: "70px" }} />
 
-        {/* LABEL */}
+        {/* INFO */}
 
         <h2
           className="section-title"
           style={{ marginBottom: "18px" }}
         >
-          LABEL
+          INFO
         </h2>
 
         <a

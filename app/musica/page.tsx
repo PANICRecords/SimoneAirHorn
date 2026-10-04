@@ -198,7 +198,7 @@ export default function MusicaPage() {
             </h2>
 
             <div
-              className="responsive-grid"
+              className="responsive-grid musica-singoli-grid"
               style={{ marginBottom: "90px" }}
             >
               {singoli.map((song) => (
@@ -249,6 +249,7 @@ export default function MusicaPage() {
             </h2>
 
             <div
+              className="musica-album-item"
               style={{
                 width: "240px",
                 maxWidth: "100%",
@@ -296,6 +297,7 @@ export default function MusicaPage() {
             </h2>
 
             <div
+              className="musica-album-item"
               style={{
                 width: "240px",
                 maxWidth: "100%",
@@ -331,6 +333,26 @@ export default function MusicaPage() {
           </>
         )}
 
+
+
+      <style>{`
+        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+          .musica-singoli-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+        }
+
+        @media (max-width: 768px) and (orientation: portrait) {
+          .musica-singoli-grid {
+            justify-items: center;
+          }
+
+          .musica-album-item {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      `}</style>
       </div>
 
       <Footer />

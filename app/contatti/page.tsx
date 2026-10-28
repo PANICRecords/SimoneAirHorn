@@ -13,6 +13,36 @@ export default function ContattiPage() {
             padding-right: 8px;
           }
         }
+
+        .contatti-title {
+          color: #cfff04;
+          text-align: left;
+        }
+
+        /* Allinea il titolo al contenitore della pagina Concerti su desktop. */
+        @media (min-width: 1025px) {
+          .contatti-title {
+            position: relative;
+            left: calc((900px - 1120px) / 2);
+            width: min(calc(100vw - 48px), 1120px);
+          }
+        }
+
+        /* Su tablet il titolo segue il margine usato dalla pagina Concerti. */
+        @media (min-width: 601px) and (max-width: 1024px) {
+          .contatti-title {
+            position: relative;
+            left: -8px;
+          }
+        }
+
+        /* Su telefono resta allineato al margine stretto della pagina Concerti. */
+        @media (max-width: 600px) {
+          .contatti-title {
+            position: relative;
+            left: -6px;
+          }
+        }
       `}</style>
 
       <div
@@ -24,7 +54,7 @@ export default function ContattiPage() {
         }}
       >
         <h1
-          className="page-title"
+          className="page-title contatti-title"
           style={{ marginBottom: "80px" }}
         >
           CONTATTI

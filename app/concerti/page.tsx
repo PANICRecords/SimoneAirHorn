@@ -8,7 +8,7 @@ const concerti = [
   { giorno: "01", mese: "APR", locale: "MADEIRA CLUB", citta: "Modena", soldOut: false },
   { giorno: "02", mese: "APR", locale: "GARDINI SOUND", citta: "Pavia", soldOut: true },
   { giorno: "08", mese: "APR", locale: "LE MUSE BILL", citta: "Imola", soldOut: false },
-  { giorno: "28", mese: "APR", locale: "THE MALL", citta: "Alghero", soldOut: false },
+  { giorno: "28", mese: "APR", locale: "THE MALL", citta: "Alghero", soldOut: true },
   { giorno: "17", mese: "AGO", locale: "PLAZA DISCO", citta: "Como", soldOut: false },
   { giorno: "22", mese: "SET", locale: "VILLA MUSIQUE", citta: "Voghera", soldOut: false },
 ];
@@ -21,7 +21,7 @@ export default function ConcertiPage() {
       <section className="concerti-page">
         <header className="concerti-header">
           <h1 className="page-title concerti-titolo">CONCERTI</h1>
-          <p>DATE LIVE 2026 - 2027</p>
+          <p>DATE LIVE 2027 - 2028</p>
         </header>
 
         <div className="concerti-list">

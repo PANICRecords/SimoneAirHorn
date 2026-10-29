@@ -49,8 +49,9 @@ export default function Navbar() {
     { nome: "HOME", href: "/" },
     { nome: "ARTISTI", href: "/artisti" },
     { nome: "MUSICA", href: "/musica" },
-    { nome: "VIDEO", href: "/video" },
+    { nome: "CONCERTI", href: "/404work" },
     { nome: "SHOP", href: "/404work" },
+    { nome: "VIDEO", href: "/video" },
     { nome: "CONTATTI", href: "/contatti" },
   ];
 

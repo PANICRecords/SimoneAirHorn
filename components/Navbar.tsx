@@ -14,13 +14,11 @@ export default function Navbar() {
   useEffect(() => {
     const update = () => {
       const width = window.innerWidth;
-      const height = window.innerHeight;
 
       // Mobile:
       // - smartphone
-      // - tablet in verticale
-      const mobile =
-        width <= 768 || (width <= 1024 && height > width);
+      // - tablet in verticale e in orizzontale
+      const mobile = width <= 1024;
 
       setIsMobile(mobile);
     };

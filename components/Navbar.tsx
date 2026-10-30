@@ -14,11 +14,9 @@ export default function Navbar() {
   useEffect(() => {
     const update = () => {
       const width = window.innerWidth;
+      const isTablet = navigator.maxTouchPoints > 1 && width <= 1400;
 
-      // Mobile:
-      // - smartphone
-      // - tablet in verticale e in orizzontale
-      const mobile = width <= 1024;
+      const mobile = width <= 768 || isTablet;
 
       setIsMobile(mobile);
     };

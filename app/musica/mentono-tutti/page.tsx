@@ -1,3 +1,4 @@
+
 "use client";
 
 import Navbar from "../../../components/Navbar";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { canzoni } from "../../../components/musicData";
+import TestoConAnnotazioni from "../../../components/TestoConAnnotazioni";
 
 import {
   FaSpotify,
@@ -22,7 +24,6 @@ import {
 
 export default function MentonoTuttiPage() {
   const pathname = usePathname();
-
   const [suggerite, setSuggerite] = useState<typeof canzoni>([]);
 
   useEffect(() => {
@@ -91,7 +92,6 @@ export default function MentonoTuttiPage() {
                 fontWeight: "normal",
               }}
             >
-              
             </span>
           </h1>
 
@@ -202,14 +202,8 @@ export default function MentonoTuttiPage() {
           TESTO
         </h2>
 
-        <div
-          className="body-medium"
-          style={{
-            whiteSpace: "pre-line",
-            marginBottom: "80px",
-          }}
-        >
-{`Uhh, non mi ama o mi ama?
+        <TestoConAnnotazioni
+          testo={`Uhh, non mi ama o mi ama?
 Click Clown (Ah)
 Ahh, ahh, ahh, ahh
 
@@ -289,7 +283,13 @@ Si - Si - Simoneee
 Non mi ama o mi ama?
 Let's, let's
 Let's go (let's go, let's go)`}
-        </div>
+          annotazioni={[
+            {
+              frase: "Faccio bowling, to bullish",
+              codice: "A-0001",
+            },
+          ]}
+        />
 
         <h2
           className="content-title"
@@ -340,7 +340,6 @@ Let's go (let's go, let's go)`}
       </section>
 
       {/* SCOPRI ANCHE */}
-
       <section
         className="content-1150"
         style={{

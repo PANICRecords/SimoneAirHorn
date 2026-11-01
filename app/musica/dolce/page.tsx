@@ -1,3 +1,4 @@
+
 "use client";
 
 import Navbar from "../../../components/Navbar";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useEffect, useState } from "react";
 import { canzoni } from "../../../components/musicData";
+import TestoConAnnotazioni from "../../../components/TestoConAnnotazioni";
 
 import {
   FaSpotify,
@@ -107,7 +109,7 @@ export default function DolcePage() {
 
           <h3
             style={{
-              color: "#cfff04",
+              color: "#0b0c09",
               fontSize: "18px",
               marginBottom: "10px",
             }}
@@ -216,14 +218,8 @@ export default function DolcePage() {
           TESTO
         </h2>
 
-        <div
-          className="body-medium"
-          style={{
-            whiteSpace: "pre-line",
-            marginBottom: "80px",
-          }}
-        >
-{`Mi inganni mille volte
+        <TestoConAnnotazioni
+          testo={`Mi inganni mille volte
 Forse è perché c’hai quel viso dolce
 Sei una bomba che esplode
 Pensi solo ai soldi, a fare storie,
@@ -320,7 +316,13 @@ Non lo so, se sei qui
 Non mi frega più troppo
 Se ti porterà in Porsche
 Se anche ti perderò`}
-        </div>
+          annotazioni={[
+            {
+              frase: "Se ora perdessi la Premier",
+              codice: "A-0002",
+            },
+          ]}
+        />
 
         <h2
           className="content-title"

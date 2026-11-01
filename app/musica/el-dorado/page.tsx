@@ -1,3 +1,4 @@
+
 "use client";
 
 import Navbar from "../../../components/Navbar";
@@ -5,8 +6,9 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { canzoni } from "../../../components/musicData";
+import TestoConAnnotazioni from "../../../components/TestoConAnnotazioni";
 
 import {
   FaSpotify,
@@ -55,38 +57,6 @@ export default function ElDoradoPage() {
     ].filter(Boolean));
   }, [pathname]);
 
-  /*
-  const suggerite = useMemo(() => {
-    const disponibili = canzoni.filter(
-      (canzone) => canzone.link !== pathname
-    );
-
-    const ordinate = [...disponibili].sort(
-      (a, b) => b.data.localeCompare(a.data)
-    );
-
-    const ultimaUscita = ordinate[0];
-
-    if (!ultimaUscita) {
-      return [];
-    }
-
-    const altre = ordinate.filter(
-      (canzone) => canzone.link !== ultimaUscita.link
-    );
-
-    const casuali = [...altre]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
-
-    return [
-      casuali[0],
-      ultimaUscita,
-      casuali[1],
-    ].filter(Boolean);
-  }, [pathname]);
-  */
-
   return (
     <main className="page">
       <Navbar />
@@ -122,7 +92,6 @@ export default function ElDoradoPage() {
                 fontWeight: "normal",
               }}
             >
-              
             </span>
           </h1>
 
@@ -233,14 +202,8 @@ export default function ElDoradoPage() {
           TESTO
         </h2>
 
-        <div
-          className="body-medium"
-          style={{
-            whiteSpace: "pre-line",
-            marginBottom: "80px",
-          }}
-        >
-{`Anche un giorno intero è importante, non spreco nada (wow)
+        <TestoConAnnotazioni
+          testo={`Anche un giorno intero è importante, non spreco nada (wow)
 Quindi col maltempo non resto rinchiuso in casa
 Mi riposerò poi dopo, nell’aldilà
 Che c’ho una missione tosta, ho un percorso e non faccio bla bla
@@ -315,7 +278,13 @@ Senti i BPM, me li giostro, sentinelle
 Ma buongiorno gente, nuovo giorno nuova traccia
 Ehh
 Eh`}
-        </div>
+          annotazioni={[
+            {
+              frase: "Siamo a Cinecittà, non cambio la musica è sacra",
+              codice: "A-0003",
+            },
+          ]}
+        />
 
         <h2
           className="content-title"
@@ -366,7 +335,6 @@ Eh`}
       </section>
 
       {/* SCOPRI ANCHE */}
-
       <section
         className="content-1150"
         style={{

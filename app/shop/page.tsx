@@ -9,9 +9,6 @@ import { useEffect, useRef, useState } from "react";
 type CollectionProps = {
   color: string;
   images: string[];
-  infoImage: string;
-  infoAlt: string;
-  reverse?: boolean;
 };
 
 function ProductDisplay({
@@ -119,44 +116,15 @@ function ProductDisplay({
   );
 }
 
-function CollectionSection({
-  color,
-  images,
-  infoImage,
-  infoAlt,
-  reverse = false,
-}: CollectionProps) {
+function CollectionSection({ color, images }: CollectionProps) {
   return (
-    <section className={`shop-collection ${reverse ? "reverse" : ""}`}>
-
-      {/* ESPOSITORE CENTRALE */}
-
-      <ProductDisplay
-        color={color}
-        images={images}
-      />
-
-      {/* IMMAGINE INFORMATIVA LATERALE */}
-
-      <div className="shop-info-container">
-        <Image
-          src={infoImage}
-          alt={infoAlt}
-          width={600}
-          height={400}
-          sizes="(max-width: 700px) 75vw, 260px"
-          className="shop-info-image"
-        />
-      </div>
-
+    <section className="shop-collection">
+      <ProductDisplay color={color} images={images} />
     </section>
   );
 }
 
 export default function ShopPage() {
-  const comingSoon = "COMING SOON";
-  const comingColors = ["#CFFF04", "#FF00C1", "#00FFEE"];
-
   return (
     <main className="page shop-page">
 
@@ -185,23 +153,16 @@ export default function ShopPage() {
             SIMONEAIRHORN
           </div>
 
-          {/* COMING SOON */}
+          {/* IMMAGINE COMING SOON */}
 
-          <h1 className="shop-coming-soon">
-            {comingSoon.split("").map((letter, index) => (
-              <span
-                key={index}
-                style={{
-                  color:
-                    letter === " "
-                      ? "transparent"
-                      : comingColors[index % comingColors.length],
-                }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </span>
-            ))}
-          </h1>
+          <Image
+            src="/images/shop/coming-soon.png"
+            alt="Coming Soon"
+            width={700}
+            height={150}
+            priority
+            className="shop-coming-soon-image"
+          />
 
         </header>
 
@@ -219,8 +180,6 @@ export default function ShopPage() {
             "/images/shop/shop3.png",
             "/images/shop/shop4.png",
           ]}
-          infoImage="/images/shop/shopinfo1.png"
-          infoAlt="Basic Collection"
         />
 
         {/* LINEA CORTA TRA LE DUE COLLEZIONI */}
@@ -237,9 +196,6 @@ export default function ShopPage() {
             "/images/shop/shop7.png",
             "/images/shop/shop8.png",
           ]}
-          infoImage="/images/shop/shopinfo2.png"
-          infoAlt="Loading Edition"
-          reverse
         />
 
       </div>
@@ -261,7 +217,6 @@ export default function ShopPage() {
           padding-bottom: 100px;
         }
 
-
         /* LOGO */
 
         .shop-intro {
@@ -279,7 +234,6 @@ export default function ShopPage() {
           object-fit: contain;
         }
 
-
         /* X CENTRALE SOTTO IL LOGO */
 
         .shop-x {
@@ -291,7 +245,6 @@ export default function ShopPage() {
           font-weight: 900;
           line-height: 1;
         }
-
 
         /* SIMONEAIRHORN SOTTO LA X */
 
@@ -305,20 +258,15 @@ export default function ShopPage() {
           letter-spacing: 3px;
         }
 
+        /* IMMAGINE COMING SOON */
 
-        /* COMING SOON */
-
-        .shop-coming-soon {
-          display: flex;
-          justify-content: center;
-          flex-wrap: nowrap;
-          margin: 45px 0 0;
-          font-size: clamp(35px, 6vw, 72px);
-          font-weight: 950;
-          letter-spacing: 4px;
-          line-height: 1.1;
+        .shop-coming-soon-image {
+          display: block;
+          width: min(78%, 580px);
+          height: auto;
+          object-fit: contain;
+          margin: 45px auto 0;
         }
-
 
         /* LINEA LUNGA SOTTO COMING SOON */
 
@@ -339,7 +287,6 @@ export default function ShopPage() {
           box-shadow: 0 0 8px rgba(207, 255, 4, 0.25);
         }
 
-
         /* COLLEZIONI */
 
         .shop-collection {
@@ -351,7 +298,6 @@ export default function ShopPage() {
           min-height: 360px;
           margin: 0 auto;
         }
-
 
         /* ESPOSITORE CENTRALE */
 
@@ -408,37 +354,6 @@ export default function ShopPage() {
           transform: rotateY(270deg) translateZ(var(--depth));
         }
 
-
-        /* IMMAGINI LATERALI */
-
-        .shop-info-container {
-          position: absolute;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 240px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .shop-info-image {
-          display: block;
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-        }
-
-        /* LOADING: IMMAGINE A SINISTRA */
-
-        .shop-collection.reverse .shop-info-container {
-          right: auto;
-          left: 0;
-        }
-
-
-        /* LINEA CORTA TRA LE COLLEZIONI */
-
         .shop-section-divider {
           width: min(75%, 650px);
           height: 1px;
@@ -452,17 +367,17 @@ export default function ShopPage() {
           box-shadow: 0 0 8px rgba(207, 255, 4, 0.25);
         }
 
-
         /* TABLET ORIZZONTALE E SCHERMI MEDI */
 
         @media (min-width: 701px) and (max-width: 1100px) {
 
-          .shop-info-container {
-            width: 190px;
-          }
-
           .shop-display {
             width: min(85%, 480px);
+          }
+
+          .shop-coming-soon-image {
+            width: min(72%, 500px);
+            margin-top: 40px;
           }
 
           .shop-collection {
@@ -471,13 +386,43 @@ export default function ShopPage() {
 
         }
 
+        /* IPAD E TABLET IN VERTICALE */
+
+        @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
+
+          .shop-content {
+            padding-left: 28px;
+            padding-right: 28px;
+            box-sizing: border-box;
+          }
+
+          .shop-intro {
+            margin-bottom: 70px;
+          }
+
+          .shop-coming-soon-image {
+            width: min(68%, 460px);
+            margin-top: 38px;
+          }
+
+        }
+
+        /* TABLET IN ORIZZONTALE */
+
+        @media (min-width: 701px) and (max-width: 1200px) and (orientation: landscape) {
+
+          .shop-coming-soon-image {
+            width: min(62%, 480px);
+            margin-top: 38px;
+          }
+
+        }
 
         /* TABLET VERTICALE E FINESTRE PIU' STRETTE */
 
         @media (min-width: 701px) and (max-width: 900px) {
 
-          .shop-collection,
-          .shop-collection.reverse {
+          .shop-collection {
             flex-direction: column;
             min-height: auto;
             gap: 22px;
@@ -487,22 +432,11 @@ export default function ShopPage() {
             width: min(88%, 560px);
           }
 
-          .shop-info-container,
-          .shop-collection.reverse .shop-info-container {
-            position: relative;
-            top: auto;
-            right: auto;
-            left: auto;
-            transform: none;
-            width: min(48%, 300px);
-          }
-
           .shop-section-divider {
             margin: 75px auto;
           }
 
         }
-
 
         /* SMARTPHONE */
 
@@ -535,20 +469,16 @@ export default function ShopPage() {
             letter-spacing: clamp(1px, 0.5vw, 2px);
           }
 
-          .shop-coming-soon {
-            width: 100%;
-            justify-content: center;
-            margin-top: 38px;
-            font-size: clamp(24px, 7vw, 40px);
-            letter-spacing: clamp(1px, 0.5vw, 2px);
+          .shop-coming-soon-image {
+            width: min(82%, 350px);
+            margin-top: 34px;
           }
 
           .shop-wide-divider {
             margin: -15px 0 45px;
           }
 
-          .shop-collection,
-          .shop-collection.reverse {
+          .shop-collection {
             flex-direction: column;
             min-height: auto;
             gap: 22px;
@@ -559,33 +489,12 @@ export default function ShopPage() {
             max-width: 560px;
           }
 
-          .shop-info-container,
-          .shop-collection.reverse .shop-info-container {
-            position: relative;
-            top: auto;
-            right: auto;
-            left: auto;
-            transform: none;
-            width: min(58%, 210px);
-          }
-
-          /* MOBILE: BASIC INFO SOPRA L'ESPOSITORE */
-          .shop-collection:not(.reverse) .shop-info-container {
-            order: -1;
-          }
-
-          /* MOBILE: LOADING INFO RESTA SOTTO L'ESPOSITORE */
-          .shop-collection.reverse .shop-info-container {
-            order: 1;
-          }
-
           .shop-section-divider {
             width: min(75%, 650px);
             margin: 65px auto;
           }
 
         }
-
 
         /* TELEFONO IN ORIZZONTALE: RIDUCE GLI SPAZI VERTICALI */
 
@@ -614,17 +523,16 @@ export default function ShopPage() {
             font-size: 14px;
           }
 
-          .shop-coming-soon {
+          .shop-coming-soon-image {
+            width: min(55vw, 340px);
             margin-top: 22px;
-            font-size: clamp(26px, 5vw, 42px);
           }
 
           .shop-wide-divider {
             margin: -10px 0 35px;
           }
 
-          .shop-collection,
-          .shop-collection.reverse {
+          .shop-collection {
             flex-direction: row;
             min-height: 220px;
             gap: 0;
@@ -634,22 +542,11 @@ export default function ShopPage() {
             width: min(62%, 420px);
           }
 
-          .shop-info-container {
-            right: 0;
-            width: min(22%, 150px);
-          }
-
-          .shop-collection.reverse .shop-info-container {
-            right: auto;
-            left: 0;
-          }
-
           .shop-section-divider {
             margin: 40px auto;
           }
 
         }
-
 
         /* ACCESSIBILITA' E DISPOSITIVI TOUCH */
 

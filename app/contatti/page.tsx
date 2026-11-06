@@ -3,107 +3,151 @@ import Footer from "../../components/Footer";
 
 export default function ContattiPage() {
   return (
-    <main className="page">
+    <main className="page contatti-page">
       <Navbar />
 
-      <style>{`
-        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-          .contatti-content {
-            padding-left: 8px;
-            padding-right: 8px;
-          }
-        }
+      <div className="content-900 page-content contatti-content">
+        <h1 className="page-title contatti-title">CONTATTI</h1>
 
-        .contatti-title {
-          color: #cfff04;
-          text-align: left;
-        }
+        <div className="contatti-sections">
+          {/* BOOKING & MANAGEMENT */}
+          <section className="contatti-item">
+            <h2 className="section-title contatti-heading">
+              BOOKING &amp; MANAGEMENT
+            </h2>
+            <a
+              className="contatti-email"
+              href="mailto:mgmt@simoneairhorn.com"
+            >
+              mgmt@simoneairhorn.com
+            </a>
+          </section>
 
-        /* Allinea il titolo al contenitore della pagina Concerti su desktop. */
-        @media (min-width: 1025px) {
-          .contatti-title {
-            position: relative;
-            left: calc((900px - 1120px) / 2);
-            width: min(calc(100vw - 48px), 1120px);
-          }
-        }
-
-        /* Su tablet il titolo segue il margine usato dalla pagina Concerti. */
-        @media (min-width: 601px) and (max-width: 1024px) {
-          .contatti-title {
-            position: relative;
-            left: -8px;
-          }
-        }
-
-        /* Su telefono resta allineato al margine stretto della pagina Concerti. */
-        @media (max-width: 600px) {
-          .contatti-title {
-            position: relative;
-            left: -6px;
-          }
-        }
-      `}</style>
-
-      <div
-        className="content-900 page-content contatti-content"
-        style={{
-          minHeight: "calc(100vh - 90px)",
-          boxSizing: "border-box",
-          paddingBottom: "120px",
-        }}
-      >
-        <h1
-          className="page-title contatti-title"
-          style={{ marginBottom: "80px" }}
-        >
-          CONTATTI
-        </h1>
-
-        {/* BOOKING */}
-
-        <h2
-          className="section-title"
-          style={{ marginBottom: "18px" }}
-        >
-          BOOKING & MANAGEMENT
-        </h2>
-
-        <a
-          href="mailto:mgmt@simoneairhorn.com"
-          style={{
-            color: "white",
-            fontSize: "24px",
-            textDecoration: "none",
-          }}
-        >
-          mgmt@simoneairhorn.com
-        </a>
-
-        <div style={{ height: "70px" }} />
-
-        {/* INFO */}
-
-        <h2
-          className="section-title"
-          style={{ marginBottom: "18px" }}
-        >
-          INFO
-        </h2>
-
-        <a
-          href="mailto:panicrecords13@gmail.com"
-          style={{
-            color: "white",
-            fontSize: "24px",
-            textDecoration: "none",
-          }}
-        >
-          panicrecords13@gmail.com
-        </a>
+          {/* INFO */}
+          <section className="contatti-item">
+            <h2 className="section-title contatti-heading">INFO</h2>
+            <a
+              className="contatti-email"
+              href="mailto:panicrecords13@gmail.com"
+            >
+              panicrecords13@gmail.com
+            </a>
+          </section>
+        </div>
       </div>
 
       <Footer />
+
+      <style>{`
+        .contatti-page {
+          min-height: 100vh;
+        }
+
+        .contatti-content {
+          box-sizing: border-box;
+          min-height: calc(100vh - 90px);
+          padding-bottom: 120px;
+        }
+
+        /* Titolo e contatti condividono lo stesso asse di allineamento. */
+        .contatti-title {
+          color: #cfff04;
+          text-align: left;
+          width: 100%;
+          margin: 0 0 72px;
+        }
+
+        .contatti-sections {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 58px;
+          width: 100%;
+        }
+
+        .contatti-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .contatti-heading {
+          margin: 0 0 16px;
+          text-align: left;
+        }
+
+        .contatti-email {
+          display: inline-block;
+          max-width: 100%;
+          color: #fff;
+          font-size: clamp(18px, 2vw, 24px);
+          line-height: 1.45;
+          text-decoration: none;
+          overflow-wrap: anywhere;
+          word-break: normal;
+          transition: color 0.2s ease;
+        }
+
+        .contatti-email:hover {
+          color: #cfff04;
+        }
+
+        /* Tablet */
+        @media (min-width: 601px) and (max-width: 1024px) {
+          .contatti-content {
+            padding-bottom: 100px;
+          }
+
+          .contatti-title {
+            margin-bottom: 62px;
+          }
+
+          .contatti-sections {
+            gap: 48px;
+          }
+        }
+
+        /* Smartphone, sia verticale sia orizzontale */
+        @media (max-width: 600px) {
+          .contatti-content {
+            min-height: calc(100vh - 75px);
+            padding-bottom: 80px;
+          }
+
+          .contatti-title {
+            margin-bottom: 48px;
+          }
+
+          .contatti-sections {
+            gap: 40px;
+          }
+
+          .contatti-heading {
+            margin-bottom: 12px;
+          }
+
+          .contatti-email {
+            font-size: clamp(17px, 4.5vw, 21px);
+          }
+        }
+
+        /* Smartphone in orizzontale: riduce gli spazi verticali. */
+        @media (max-width: 900px) and (orientation: landscape) {
+          .contatti-content {
+            padding-bottom: 65px;
+          }
+
+          .contatti-title {
+            margin-bottom: 38px;
+          }
+
+          .contatti-sections {
+            gap: 30px;
+          }
+        }
+      `}</style>
     </main>
   );
 }

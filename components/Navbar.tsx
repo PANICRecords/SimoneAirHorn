@@ -14,18 +14,26 @@ export default function Navbar() {
   useEffect(() => {
     const update = () => {
       const width = window.innerWidth;
-      const isTablet = navigator.maxTouchPoints > 1 && width <= 1400;
+      const height = window.innerHeight;
+      const hasTouch = navigator.maxTouchPoints > 1;
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
-      const mobile = width <= 768 || isTablet;
+      // Mantiene il menu desktop sui normali computer e usa l'hamburger
+      // su tablet touch in entrambe le orientazioni.
+      const tablet = (hasTouch || coarsePointer) && width <= 1600;
+      const mobile = width <= 768 || tablet || (width <= 1024 && height > width);
 
       setIsMobile(mobile);
     };
 
     update();
-
     window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
 
-    return () => window.removeEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
   }, []);
 
   useEffect(() => {
@@ -39,6 +47,22 @@ export default function Navbar() {
       setWorkSection(null);
       sessionStorage.removeItem("panic-404-section");
     }
+  }, [pathname]);
+
+  // Quando il menu è aperto, lo sfondo non scorre: scorre soltanto il menu.
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    setOpen(false);
   }, [pathname]);
 
   const menu = [
@@ -154,12 +178,17 @@ export default function Navbar() {
         {isMobile && (
           <button
             onClick={() => setOpen(!open)}
+            aria-label={open ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={open}
             style={{
               background: "transparent",
               border: "none",
               color: "white",
               fontSize: "34px",
               cursor: "pointer",
+              lineHeight: 1,
+              padding: "8px 0 8px 12px",
+              flexShrink: 0,
             }}
           >
             ☰
@@ -169,33 +198,48 @@ export default function Navbar() {
 
       {isMobile && (
         <div
+          aria-hidden={!open}
           style={{
             position: "fixed",
             top: 0,
             right: open ? 0 : "-100%",
             width: "100%",
             height: "100vh",
+            height: "100dvh",
+            minHeight: 0,
             background: "#000",
             transition: ".35s",
-            zIndex: 998,
+            zIndex: 1000,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center",
-            gap: "35px",
+            gap: "clamp(18px, 3.5vh, 30px)",
+            boxSizing: "border-box",
+            paddingTop: "max(95px, calc(env(safe-area-inset-top) + 82px))",
+            paddingBottom: "max(35px, env(safe-area-inset-bottom))",
+            overflowY: "auto",
+            overflowX: "hidden",
+            WebkitOverflowScrolling: "touch",
+            overscrollBehaviorY: "contain",
+            visibility: open ? "visible" : "hidden",
           }}
         >
           <button
             onClick={() => setOpen(false)}
+            aria-label="Chiudi menu"
             style={{
-              position: "absolute",
-              top: 25,
-              right: 25,
+              position: "fixed",
+              top: "max(18px, env(safe-area-inset-top))",
+              right: "25px",
               background: "transparent",
               border: "none",
               color: "white",
               fontSize: "38px",
               cursor: "pointer",
+              zIndex: 1002,
+              lineHeight: 1,
+              padding: "5px",
             }}
           >
             ✕
@@ -209,9 +253,11 @@ export default function Navbar() {
               style={{
                 color: isActive(item) ? "#cfff04" : "white",
                 textDecoration: "none",
-                fontSize: "30px",
+                fontSize: "clamp(22px, 4vw, 30px)",
                 fontWeight: "bold",
                 transition: ".25s",
+                flexShrink: 0,
+                lineHeight: 1.15,
               }}
             >
               {item.nome}

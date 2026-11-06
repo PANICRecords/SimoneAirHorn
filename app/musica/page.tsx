@@ -54,7 +54,7 @@ export default function MusicaPage() {
     <main className="page">
       <Navbar />
 
-      <div className="content-1300 page-content">
+      <div className="content-1300 page-content musica-content">
 
         {/* NUOVA USCITA */}
 
@@ -76,7 +76,7 @@ export default function MusicaPage() {
             textAlign: isMobile ? "center" : "left",
           }}
         >
-          <Link href="/musica/el-dorado">
+          <Link href="/musica/el-dorado" className="feature-release-cover">
             <Image
               src="/images/covers/el-dorado.png"
               alt="El Dorado"
@@ -90,9 +90,10 @@ export default function MusicaPage() {
             />
           </Link>
 
-          <div>
+          <div className="feature-release-info">
             <Link href="/musica/el-dorado">
               <h2
+                className="feature-release-title"
                 style={{
                   fontSize: "54px",
                   marginBottom: "20px",
@@ -113,6 +114,7 @@ export default function MusicaPage() {
         {/* ORDINA PER */}
 
         <div
+          className="musica-sort-bar"
           style={{
             borderTop: "1px solid #333",
             borderBottom: "1px solid #333",
@@ -204,6 +206,7 @@ export default function MusicaPage() {
               {singoli.map((song) => (
                 <div
                   key={song.nome}
+                  className="musica-song-item"
                   style={{
                     width: "240px",
                     maxWidth: "100%",
@@ -333,26 +336,112 @@ export default function MusicaPage() {
           </>
         )}
 
+        <style>{`
+          /* TABLET VERTICALE: più respiro dai bordi e griglia ordinata */
+          @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+            .musica-content {
+              padding-left: clamp(28px, 5vw, 52px);
+              padding-right: clamp(28px, 5vw, 52px);
+              box-sizing: border-box;
+            }
 
+            .musica-singoli-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+              justify-items: center;
+              column-gap: 28px;
+              row-gap: 42px;
+            }
 
-      <style>{`
-        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-          .musica-singoli-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            .musica-song-item {
+              width: min(100%, 260px) !important;
+            }
+
+            .musica-album-item {
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .feature-release-cover img {
+              width: min(300px, 100%);
+              height: auto;
+            }
           }
-        }
 
-        @media (max-width: 768px) and (orientation: portrait) {
-          .musica-singoli-grid {
-            justify-items: center;
+          /* SMARTPHONE VERTICALE */
+          @media (max-width: 768px) and (orientation: portrait) {
+            .musica-content {
+              padding-left: clamp(18px, 5vw, 28px);
+              padding-right: clamp(18px, 5vw, 28px);
+              box-sizing: border-box;
+            }
+
+            .musica-content > .section-title {
+              line-height: 1.15;
+            }
+
+            .feature-release {
+              gap: 20px !important;
+              margin-bottom: 52px !important;
+            }
+
+            .feature-release-cover img {
+              width: min(300px, 78vw);
+              height: auto;
+            }
+
+            .feature-release-title {
+              font-size: clamp(32px, 9vw, 46px) !important;
+              line-height: 1.05;
+              margin-bottom: 16px !important;
+            }
+
+            .musica-sort-bar {
+              flex-wrap: wrap !important;
+              white-space: normal !important;
+              gap: 10px !important;
+              padding: 19px 8px !important;
+              margin-bottom: 42px !important;
+            }
+
+            .musica-singoli-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+              justify-items: center;
+              column-gap: 14px;
+              row-gap: 32px;
+              margin-bottom: 65px !important;
+            }
+
+            .musica-song-item {
+              width: 100% !important;
+              max-width: 240px !important;
+            }
+
+            .musica-song-item h3,
+            .musica-album-item h3 {
+              font-size: clamp(15px, 4vw, 20px) !important;
+              overflow-wrap: anywhere;
+            }
+
+            .musica-album-item {
+              width: min(240px, 100%) !important;
+              margin-left: auto;
+              margin-right: auto;
+            }
           }
 
-          .musica-album-item {
-            margin-left: auto;
-            margin-right: auto;
+          /* SMARTPHONE ORIZZONTALE: margini contenuti senza alterare il desktop */
+          @media (max-width: 900px) and (orientation: landscape) {
+            .musica-content {
+              padding-left: 24px;
+              padding-right: 24px;
+              box-sizing: border-box;
+            }
+
+            .feature-release-title {
+              font-size: clamp(34px, 6vw, 48px) !important;
+            }
           }
-        }
-      `}</style>
+        `}</style>
       </div>
 
       <Footer />

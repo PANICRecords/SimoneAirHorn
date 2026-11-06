@@ -566,7 +566,17 @@ export default function ShopPage() {
             right: auto;
             left: auto;
             transform: none;
-            width: min(75%, 280px);
+            width: min(58%, 210px);
+          }
+
+          /* MOBILE: BASIC INFO SOPRA L'ESPOSITORE */
+          .shop-collection:not(.reverse) .shop-info-container {
+            order: -1;
+          }
+
+          /* MOBILE: LOADING INFO RESTA SOTTO L'ESPOSITORE */
+          .shop-collection.reverse .shop-info-container {
+            order: 1;
           }
 
           .shop-section-divider {

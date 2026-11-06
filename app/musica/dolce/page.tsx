@@ -109,7 +109,7 @@ export default function DolcePage() {
 
           <h3
             style={{
-              color: "#0b0c09",
+              color: "#cfff04",
               fontSize: "18px",
               marginBottom: "10px",
             }}

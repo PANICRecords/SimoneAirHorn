@@ -204,7 +204,6 @@ export default function Navbar() {
             top: 0,
             right: open ? 0 : "-100%",
             width: "100%",
-            height: "100vh",
             height: "100dvh",
             minHeight: 0,
             background: "#000",

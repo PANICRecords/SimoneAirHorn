@@ -137,7 +137,7 @@ export default function ShopPage() {
         <header className="shop-intro">
 
           <Image
-            src="/images/shop/logo-i-i-p.png"
+            src="/images/shop/logo-i-i-p-x-s.png"
             alt="Italy in Panic"
             width={650}
             height={200}
@@ -145,13 +145,6 @@ export default function ShopPage() {
             className="shop-logo"
           />
 
-          <div className="shop-x">
-            X
-          </div>
-
-          <div className="shop-artist-name">
-            SIMONEAIRHORN
-          </div>
 
           {/* IMMAGINE COMING SOON */}
 
@@ -213,7 +206,7 @@ export default function ShopPage() {
         }
 
         .shop-content {
-          padding-top: 35px;
+          padding-top: 78px;
           padding-bottom: 100px;
         }
 
@@ -233,39 +226,14 @@ export default function ShopPage() {
           height: auto;
           object-fit: contain;
         }
-
-        /* X CENTRALE SOTTO IL LOGO */
-
-        .shop-x {
-          position: relative;
-          z-index: 2;
-          margin-top: -75px;
-          color: #FFFFFF;
-          font-size: 25px;
-          font-weight: 900;
-          line-height: 1;
-        }
-
-        /* SIMONEAIRHORN SOTTO LA X */
-
-        .shop-artist-name {
-          position: relative;
-          z-index: 2;
-          margin-top: 14px;
-          color: #fff;
-          font-size: clamp(17px, 2.2vw, 24px);
-          font-weight: 900;
-          letter-spacing: 3px;
-        }
-
-        /* IMMAGINE COMING SOON */
+/* IMMAGINE COMING SOON */
 
         .shop-coming-soon-image {
           display: block;
           width: min(78%, 580px);
           height: auto;
           object-fit: contain;
-          margin: 45px auto 0;
+          margin: -32px auto 0;
         }
 
         /* LINEA LUNGA SOTTO COMING SOON */
@@ -377,7 +345,7 @@ export default function ShopPage() {
 
           .shop-coming-soon-image {
             width: min(72%, 500px);
-            margin-top: 40px;
+            margin-top: -32px;
           }
 
           .shop-collection {
@@ -402,7 +370,7 @@ export default function ShopPage() {
 
           .shop-coming-soon-image {
             width: min(68%, 460px);
-            margin-top: 38px;
+            margin-top: -28px;
           }
 
         }
@@ -413,7 +381,7 @@ export default function ShopPage() {
 
           .shop-coming-soon-image {
             width: min(62%, 480px);
-            margin-top: 38px;
+            margin-top: -28px;
           }
 
         }
@@ -445,7 +413,7 @@ export default function ShopPage() {
           .shop-content {
             width: 100%;
             max-width: 100%;
-            padding: 30px 12px 65px;
+            padding: 76px 12px 65px;
             box-sizing: border-box;
           }
 
@@ -457,21 +425,9 @@ export default function ShopPage() {
           .shop-logo {
             width: min(78%, 260px);
           }
-
-          .shop-x {
-            margin-top: -60px;
-            font-size: 21px;
-          }
-
-          .shop-artist-name {
-            margin-top: 14px;
-            font-size: clamp(14px, 4vw, 16px);
-            letter-spacing: clamp(1px, 0.5vw, 2px);
-          }
-
-          .shop-coming-soon-image {
+.shop-coming-soon-image {
             width: min(82%, 350px);
-            margin-top: 34px;
+            margin-top: -24px;
           }
 
           .shop-wide-divider {
@@ -512,20 +468,9 @@ export default function ShopPage() {
           .shop-logo {
             width: min(34vw, 210px);
           }
-
-          .shop-x {
-            margin-top: -48px;
-            font-size: 18px;
-          }
-
-          .shop-artist-name {
-            margin-top: 10px;
-            font-size: 14px;
-          }
-
-          .shop-coming-soon-image {
+.shop-coming-soon-image {
             width: min(55vw, 340px);
-            margin-top: 22px;
+            margin-top: -18px;
           }
 
           .shop-wide-divider {

@@ -3,6 +3,7 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ShopPage() {
   return (
@@ -32,19 +33,23 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 700px) 50vw, 50vw"
+              sizes="(max-width: 1024px) 50vw, 50vw"
               className="shop-card-image"
             />
-            <div className="shop-card-button" aria-hidden="true">
+            <Link
+              href="/shop/coming-soon"
+              className="shop-card-button"
+              aria-label="Scopri la sezione Music — Coming Soon"
+            >
               <Image
                 src="/images/shop/shopacquistapulsante.png"
-                alt=""
+                alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 700px) 50vw, 50vw"
+                sizes="(max-width: 1024px) 50vw, 50vw"
                 className="shop-button-image"
               />
-            </div>
+            </Link>
           </article>
 
           <article className="shop-card">
@@ -54,19 +59,23 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 700px) 50vw, 50vw"
+              sizes="(max-width: 1024px) 50vw, 50vw"
               className="shop-card-image"
             />
-            <div className="shop-card-button" aria-hidden="true">
+            <Link
+              href="/shop/coming-soon"
+              className="shop-card-button"
+              aria-label="Scopri la sezione Merch — Coming Soon"
+            >
               <Image
                 src="/images/shop/shopacquistapulsante.png"
-                alt=""
+                alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 700px) 50vw, 50vw"
+                sizes="(max-width: 1024px) 50vw, 50vw"
                 className="shop-button-image"
               />
-            </div>
+            </Link>
           </article>
         </section>
       </div>
@@ -89,7 +98,7 @@ export default function ShopPage() {
           box-sizing: border-box;
         }
 
-        /* INTESTAZIONE: lasciata invariata */
+        /* DESKTOP: impostazioni originali, lasciate invariate. */
         .shop-hero {
           position: relative;
           width: 100%;
@@ -110,7 +119,6 @@ export default function ShopPage() {
           object-fit: contain;
         }
 
-        /* Si riducono soltanto i due riquadri, non l'intestazione. */
         .shop-experiences {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -143,26 +151,20 @@ export default function ShopPage() {
           object-position: center;
         }
 
-        /*
-          Il file del pulsante è una tavola 1920x1080 con il pulsante
-          al centro. La tavola viene ingrandita e ritagliata dentro
-          una piccola finestra: resta visibile soltanto il pulsante.
-          Il nero si fonde con il fondo nero del riquadro.
-        */
         .shop-card-button {
           position: absolute;
           z-index: 2;
           top: 82%;
           left: 50%;
+          display: block;
           width: 32%;
           aspect-ratio: 4.18 / 1;
           transform: translateX(-50%);
           overflow: hidden;
-          pointer-events: none;
+          cursor: pointer;
+          pointer-events: auto;
         }
 
-        /* Fondo nero soltanto all'interno della sagoma del pulsante.
-           Fuori dalla sagoma resta visibile l'immagine sottostante. */
         .shop-card-button::before {
           content: "";
           position: absolute;
@@ -184,71 +186,128 @@ export default function ShopPage() {
           object-fit: cover;
           object-position: center 43%;
           mix-blend-mode: screen;
+          pointer-events: none;
         }
 
-        /* Tablet: i riquadri restano affiancati e si riducono insieme. */
-        @media (max-width: 900px) {
+        /* TABLET E MOBILE: il desktop non viene toccato.
+           L'intestazione mostra il PNG intero, senza il ritaglio orizzontale desktop. */
+        @media (max-width: 1024px) {
           .shop-content {
             width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-            padding-bottom: 65px;
+            max-width: none;
+            padding: 0 0 55px;
+          }
+
+          .shop-hero {
+            width: 100%;
+            height: auto;
+            aspect-ratio: auto;
+            overflow: visible;
+            margin: 0 auto 12px;
+          }
+
+          .shop-hero-image {
+            position: relative;
+            top: auto;
+            left: auto;
+            width: 100%;
+            height: auto;
+            transform: none;
+            object-fit: contain;
           }
 
           .shop-experiences {
-            width: 86%;
-            gap: 12px;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(8px, 1.5vw, 16px);
           }
 
           .shop-card {
+            aspect-ratio: 16 / 9;
             border-width: 2px;
+            border-radius: clamp(9px, 1.5vw, 18px);
+          }
+
+          .shop-card-image {
+            object-fit: contain;
+          }
+
+          .shop-card-button {
+            top: 80%;
+            width: 38%;
+          }
+
+          .shop-card-button::before {
+            inset: 2px;
           }
         }
 
-        /* Tablet verticale */
-        @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
-          .shop-experiences {
-            width: 86%;
-            gap: 12px;
-          }
-        }
-
-        /* Smartphone: stessa disposizione a due colonne. */
+        /* SMARTPHONE: due schede affiancate, con immagini intere e leggibili. */
         @media (max-width: 700px) {
           .shop-content {
-            width: 100%;
-            padding: 0 0 45px;
+            padding-bottom: 38px;
+          }
+
+          .shop-hero {
+            margin-bottom: 8px;
           }
 
           .shop-experiences {
-            width: 88%;
+            width: calc(100% - 20px);
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 7px;
           }
 
           .shop-card {
+            aspect-ratio: 16 / 9;
             border-width: 1.5px;
-            border-radius: 10px;
+            border-radius: 9px;
           }
 
           .shop-card-button {
-            top: 82%;
-            width: 32%;
+            top: 78%;
+            width: 43%;
           }
         }
 
-        /* Smartphone in orizzontale: composizione invariata. */
-        @media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+        /* TABLET VERTICALE: conserva le due colonne e sfrutta la larghezza disponibile. */
+        @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
           .shop-content {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-            padding-bottom: 35px;
+            padding-bottom: 50px;
+          }
+
+          .shop-hero {
+            margin-bottom: 10px;
           }
 
           .shop-experiences {
-            width: 86%;
-            gap: 10px;
+            width: calc(100% - 48px);
+            gap: 14px;
+          }
+
+          .shop-card-button {
+            width: 36%;
+          }
+        }
+
+        /* TABLET E SMARTPHONE ORIZZONTALI: niente ritagli dell'intestazione. */
+        @media (max-width: 1024px) and (orientation: landscape) {
+          .shop-content {
+            padding-bottom: 35px;
+          }
+
+          .shop-hero {
+            margin-bottom: 8px;
+          }
+
+          .shop-experiences {
+            width: min(90%, 1200px);
+            gap: 12px;
+          }
+
+          .shop-card-button {
+            width: 34%;
           }
         }
 

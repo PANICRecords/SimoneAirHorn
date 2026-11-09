@@ -1,515 +1,263 @@
-
 "use client";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-
-type CollectionProps = {
-  color: string;
-  images: string[];
-};
-
-function ProductDisplay({
-  color,
-  images,
-}: {
-  color: string;
-  images: string[];
-}) {
-  const [rotation, setRotation] = useState(0);
-  const [dragging, setDragging] = useState(false);
-
-  const rotationRef = useRef(0);
-  const draggingRef = useRef(false);
-  const lastX = useRef(0);
-  const displayRef = useRef<HTMLDivElement>(null);
-
-  // Mantiene la profondità sempre pari a metà della larghezza reale:
-  // così le quattro facce restano proporzionate su ogni schermo.
-  useEffect(() => {
-    const element = displayRef.current;
-    if (!element) return;
-
-    const updateDepth = () => {
-      const width = element.getBoundingClientRect().width;
-      element.style.setProperty("--depth", `${width / 2}px`);
-    };
-
-    updateDepth();
-
-    const observer = new ResizeObserver(updateDepth);
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      if (!draggingRef.current) {
-        rotationRef.current -= 0.2;
-        setRotation(rotationRef.current);
-      }
-    }, 30);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  const handlePointerDown = (
-    event: React.PointerEvent<HTMLDivElement>
-  ) => {
-    draggingRef.current = true;
-    setDragging(true);
-    lastX.current = event.clientX;
-    event.currentTarget.setPointerCapture(event.pointerId);
-  };
-
-  const handlePointerMove = (
-    event: React.PointerEvent<HTMLDivElement>
-  ) => {
-    if (!draggingRef.current) return;
-
-    const delta = event.clientX - lastX.current;
-    lastX.current = event.clientX;
-
-    rotationRef.current += delta * 0.5;
-    setRotation(rotationRef.current);
-  };
-
-  const handlePointerUp = () => {
-    draggingRef.current = false;
-    setDragging(false);
-  };
-
-  return (
-    <div
-      ref={displayRef}
-      className={`shop-display ${dragging ? "dragging" : ""}`}
-      style={{ "--display-color": color } as React.CSSProperties}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-    >
-      <div
-        className="shop-display-inner"
-        style={{ transform: `rotateY(${rotation}deg)` }}
-      >
-        {images.map((image, index) => (
-          <div
-            className={`shop-display-face face-${index + 1}`}
-            key={image}
-          >
-            <Image
-              src={image}
-              alt={`Collezione - immagine ${index + 1}`}
-              fill
-              sizes="(max-width: 700px) 94vw, 520px"
-              draggable={false}
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function CollectionSection({ color, images }: CollectionProps) {
-  return (
-    <section className="shop-collection">
-      <ProductDisplay color={color} images={images} />
-    </section>
-  );
-}
 
 export default function ShopPage() {
   return (
     <main className="page shop-page">
-
       <Navbar />
 
-      <div className="content-1300 page-content shop-content">
-
-        {/* LOGO E COLLABORAZIONE */}
-
-        <header className="shop-intro">
-
+      <div className="shop-content">
+        {/* INTESTAZIONE COMPLETA: LOGO, SHOP E SOTTOTITOLO */}
+        <header className="shop-hero">
           <Image
-            src="/images/shop/logo-i-i-p-x-s.png"
-            alt="Italy in Panic"
-            width={650}
-            height={200}
+            src="/images/shop/shoplogoc.png"
+            alt="Italy in Panic x SimoneAirHorn — Shop, scegli la tua esperienza"
+            width={1920}
+            height={1080}
             priority
-            className="shop-logo"
+            sizes="100vw"
+            className="shop-hero-image"
           />
-
-
-          {/* IMMAGINE COMING SOON */}
-
-          <Image
-            src="/images/shop/coming-soon.png"
-            alt="Coming Soon"
-            width={700}
-            height={150}
-            priority
-            className="shop-coming-soon-image"
-          />
-
         </header>
 
-        {/* LINEA LUNGA SOTTO COMING SOON */}
+        {/* LE DUE ESPERIENZE: SEMPRE AFFIANCATE */}
+        <section className="shop-experiences" aria-label="Scegli la tua esperienza">
+          <article className="shop-card">
+            <Image
+              src="/images/shop/shopmusic.png"
+              alt="Music — collezione musicale e vinile UP"
+              width={1920}
+              height={1080}
+              priority
+              sizes="(max-width: 700px) 50vw, 50vw"
+              className="shop-card-image"
+            />
+            <div className="shop-card-button" aria-hidden="true">
+              <Image
+                src="/images/shop/shopacquistapulsante.png"
+                alt=""
+                width={1920}
+                height={1080}
+                sizes="(max-width: 700px) 50vw, 50vw"
+                className="shop-button-image"
+              />
+            </div>
+          </article>
 
-        <div className="shop-wide-divider" />
-
-        {/* BASIC COLLECTION */}
-
-        <CollectionSection
-          color="#CFFF04"
-          images={[
-            "/images/shop/shop1.png",
-            "/images/shop/shop2.png",
-            "/images/shop/shop3.png",
-            "/images/shop/shop4.png",
-          ]}
-        />
-
-        {/* LINEA CORTA TRA LE DUE COLLEZIONI */}
-
-        <div className="shop-section-divider" />
-
-        {/* LOADING EDITION */}
-
-        <CollectionSection
-          color="#39FF14"
-          images={[
-            "/images/shop/shop5.png",
-            "/images/shop/shop6.png",
-            "/images/shop/shop7.png",
-            "/images/shop/shop8.png",
-          ]}
-        />
-
+          <article className="shop-card">
+            <Image
+              src="/images/shop/shopmerch.png"
+              alt="Merch — abbigliamento ufficiale"
+              width={1920}
+              height={1080}
+              priority
+              sizes="(max-width: 700px) 50vw, 50vw"
+              className="shop-card-image"
+            />
+            <div className="shop-card-button" aria-hidden="true">
+              <Image
+                src="/images/shop/shopacquistapulsante.png"
+                alt=""
+                width={1920}
+                height={1080}
+                sizes="(max-width: 700px) 50vw, 50vw"
+                className="shop-button-image"
+              />
+            </div>
+          </article>
+        </section>
       </div>
 
       <Footer />
 
       <style>{`
-
-        /* PAGINA */
-
         .shop-page {
+          min-height: 100vh;
+          overflow: hidden;
           background: #000;
           color: #fff;
-          overflow: hidden;
         }
 
         .shop-content {
-          padding-top: 78px;
-          padding-bottom: 100px;
-        }
-
-        /* LOGO */
-
-        .shop-intro {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          margin-bottom: 85px;
-        }
-
-        .shop-logo {
-          display: block;
-          width: min(75%, 320px);
-          height: auto;
-          object-fit: contain;
-        }
-/* IMMAGINE COMING SOON */
-
-        .shop-coming-soon-image {
-          display: block;
-          width: min(78%, 580px);
-          height: auto;
-          object-fit: contain;
-          margin: -32px auto 0;
-        }
-
-        /* LINEA LUNGA SOTTO COMING SOON */
-
-        .shop-wide-divider {
-          position: relative;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100vw;
-          height: 1px;
-          margin: -25px 0 65px;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            #CFFF04 8%,
-            #CFFF04 92%,
-            transparent
-          );
-          box-shadow: 0 0 8px rgba(207, 255, 4, 0.25);
-        }
-
-        /* COLLEZIONI */
-
-        .shop-collection {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           width: 100%;
-          min-height: 360px;
+          max-width: 1520px;
+          margin: 0 auto;
+          padding: 0 0 90px;
+          box-sizing: border-box;
+        }
+
+        /* INTESTAZIONE: lasciata invariata */
+        .shop-hero {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1920 / 620;
+          overflow: hidden;
+          margin: 0 auto 4px;
+        }
+
+        .shop-hero-image {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: auto;
+          max-width: none;
+          transform: translateY(-50%);
+          object-fit: contain;
+        }
+
+        /* Si riducono soltanto i due riquadri, non l'intestazione. */
+        .shop-experiences {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          align-items: stretch;
+          gap: clamp(10px, 1.2vw, 20px);
+          width: 80%;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
-        /* ESPOSITORE CENTRALE */
-
-        .shop-display {
-          --depth: 260px;
-
+        .shop-card {
           position: relative;
-          width: min(90%, 520px);
-          aspect-ratio: 16 / 9;
-          perspective: 1400px;
-          cursor: grab;
-          touch-action: pan-y;
-          user-select: none;
-          -webkit-user-select: none;
-          flex-shrink: 0;
+          min-width: 0;
+          aspect-ratio: 2.05 / 1;
+          overflow: hidden;
+          border: 3px solid #CFFF04;
+          border-radius: clamp(12px, 2vw, 28px);
+          background: #000;
+          box-sizing: border-box;
+          isolation: isolate;
         }
 
-        .shop-display.dragging {
-          cursor: grabbing;
-        }
-
-        .shop-display-inner {
+        .shop-card-image {
           position: absolute;
           inset: 0;
-          transform-style: preserve-3d;
-          will-change: transform;
-        }
-
-        .shop-display-face {
-          position: absolute;
-          inset: 0;
+          display: block;
           width: 100%;
           height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        /*
+          Il file del pulsante è una tavola 1920x1080 con il pulsante
+          al centro. La tavola viene ingrandita e ritagliata dentro
+          una piccola finestra: resta visibile soltanto il pulsante.
+          Il nero si fonde con il fondo nero del riquadro.
+        */
+        .shop-card-button {
+          position: absolute;
+          z-index: 2;
+          top: 82%;
+          left: 50%;
+          width: 32%;
+          aspect-ratio: 4.18 / 1;
+          transform: translateX(-50%);
           overflow: hidden;
-          border: 2px solid var(--display-color);
-          background: #080808;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
+          pointer-events: none;
         }
 
-        .face-1 {
-          transform: rotateY(0deg) translateZ(var(--depth));
+        /* Fondo nero soltanto all'interno della sagoma del pulsante.
+           Fuori dalla sagoma resta visibile l'immagine sottostante. */
+        .shop-card-button::before {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          inset: 5px;
+          border-radius: 999px;
+          background: #000;
         }
 
-        .face-2 {
-          transform: rotateY(90deg) translateZ(var(--depth));
+        .shop-button-image {
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          max-width: none;
+          object-fit: cover;
+          object-position: center 43%;
+          mix-blend-mode: screen;
         }
 
-        .face-3 {
-          transform: rotateY(180deg) translateZ(var(--depth));
-        }
-
-        .face-4 {
-          transform: rotateY(270deg) translateZ(var(--depth));
-        }
-
-        .shop-section-divider {
-          width: min(75%, 650px);
-          height: 1px;
-          margin: 95px auto;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            #CFFF04,
-            transparent
-          );
-          box-shadow: 0 0 8px rgba(207, 255, 4, 0.25);
-        }
-
-        /* TABLET ORIZZONTALE E SCHERMI MEDI */
-
-        @media (min-width: 701px) and (max-width: 1100px) {
-
-          .shop-display {
-            width: min(85%, 480px);
+        /* Tablet: i riquadri restano affiancati e si riducono insieme. */
+        @media (max-width: 900px) {
+          .shop-content {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 65px;
           }
 
-          .shop-coming-soon-image {
-            width: min(72%, 500px);
-            margin-top: -32px;
+          .shop-experiences {
+            width: 86%;
+            gap: 12px;
           }
 
-          .shop-collection {
-            min-height: 320px;
+          .shop-card {
+            border-width: 2px;
           }
-
         }
 
-        /* IPAD E TABLET IN VERTICALE */
-
+        /* Tablet verticale */
         @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
-
-          .shop-content {
-            padding-left: 28px;
-            padding-right: 28px;
-            box-sizing: border-box;
+          .shop-experiences {
+            width: 86%;
+            gap: 12px;
           }
-
-          .shop-intro {
-            margin-bottom: 70px;
-          }
-
-          .shop-coming-soon-image {
-            width: min(68%, 460px);
-            margin-top: -28px;
-          }
-
         }
 
-        /* TABLET IN ORIZZONTALE */
-
-        @media (min-width: 701px) and (max-width: 1200px) and (orientation: landscape) {
-
-          .shop-coming-soon-image {
-            width: min(62%, 480px);
-            margin-top: -28px;
-          }
-
-        }
-
-        /* TABLET VERTICALE E FINESTRE PIU' STRETTE */
-
-        @media (min-width: 701px) and (max-width: 900px) {
-
-          .shop-collection {
-            flex-direction: column;
-            min-height: auto;
-            gap: 22px;
-          }
-
-          .shop-display {
-            width: min(88%, 560px);
-          }
-
-          .shop-section-divider {
-            margin: 75px auto;
-          }
-
-        }
-
-        /* SMARTPHONE */
-
+        /* Smartphone: stessa disposizione a due colonne. */
         @media (max-width: 700px) {
-
           .shop-content {
             width: 100%;
-            max-width: 100%;
-            padding: 76px 12px 65px;
-            box-sizing: border-box;
+            padding: 0 0 45px;
           }
 
-          .shop-intro {
-            width: 100%;
-            margin-bottom: 65px;
+          .shop-experiences {
+            width: 88%;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
           }
 
-          .shop-logo {
-            width: min(78%, 260px);
-          }
-.shop-coming-soon-image {
-            width: min(82%, 350px);
-            margin-top: -24px;
+          .shop-card {
+            border-width: 1.5px;
+            border-radius: 10px;
           }
 
-          .shop-wide-divider {
-            margin: -15px 0 45px;
+          .shop-card-button {
+            top: 82%;
+            width: 32%;
           }
-
-          .shop-collection {
-            flex-direction: column;
-            min-height: auto;
-            gap: 22px;
-          }
-
-          .shop-display {
-            width: 100%;
-            max-width: 560px;
-          }
-
-          .shop-section-divider {
-            width: min(75%, 650px);
-            margin: 65px auto;
-          }
-
         }
 
-        /* TELEFONO IN ORIZZONTALE: RIDUCE GLI SPAZI VERTICALI */
-
+        /* Smartphone in orizzontale: composizione invariata. */
         @media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
-
           .shop-content {
-            padding-top: 18px;
-            padding-bottom: 40px;
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 35px;
           }
 
-          .shop-intro {
-            margin-bottom: 38px;
-          }
-
-          .shop-logo {
-            width: min(34vw, 210px);
-          }
-.shop-coming-soon-image {
-            width: min(55vw, 340px);
-            margin-top: -18px;
-          }
-
-          .shop-wide-divider {
-            margin: -10px 0 35px;
-          }
-
-          .shop-collection {
-            flex-direction: row;
-            min-height: 220px;
-            gap: 0;
-          }
-
-          .shop-display {
-            width: min(62%, 420px);
-          }
-
-          .shop-section-divider {
-            margin: 40px auto;
-          }
-
-        }
-
-        /* ACCESSIBILITA' E DISPOSITIVI TOUCH */
-
-        @media (hover: none) {
-          .shop-display {
-            cursor: grab;
+          .shop-experiences {
+            width: 86%;
+            gap: 10px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .shop-display-inner {
-            will-change: auto;
+          .shop-page * {
+            scroll-behavior: auto;
           }
         }
-
-      
       `}</style>
-
     </main>
   );
 }

@@ -31,7 +31,7 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 700px) 48vw, (max-width: 1024px) 48vw, 50vw"
+              sizes="(max-width: 700px) 94vw, (max-width: 1024px) 46vw, 40vw"
               className="shop-card-image"
             />
             <Link
@@ -44,7 +44,7 @@ export default function ShopPage() {
                 alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 700px) 28vw, 20vw"
+                sizes="(max-width: 700px) 40vw, 18vw"
                 className="shop-button-image"
               />
             </Link>
@@ -57,7 +57,7 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 700px) 48vw, (max-width: 1024px) 48vw, 50vw"
+              sizes="(max-width: 700px) 94vw, (max-width: 1024px) 46vw, 40vw"
               className="shop-card-image"
             />
             <Link
@@ -70,7 +70,7 @@ export default function ShopPage() {
                 alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 700px) 28vw, 20vw"
+                sizes="(max-width: 700px) 40vw, 18vw"
                 className="shop-button-image"
               />
             </Link>
@@ -128,7 +128,9 @@ export default function ShopPage() {
 
         .shop-card {
           position: relative;
+          display: block;
           min-width: 0;
+          width: 100%;
           aspect-ratio: 2.05 / 1;
           overflow: hidden;
           border: 3px solid #CFFF04;
@@ -144,6 +146,7 @@ export default function ShopPage() {
           display: block;
           width: 100%;
           height: 100%;
+          max-width: none;
           object-fit: cover;
           object-position: center;
         }
@@ -186,7 +189,6 @@ export default function ShopPage() {
           pointer-events: none;
         }
 
-        /* TABLET: due schede affiancate, con proporzioni compatte. */
         @media (max-width: 1024px) {
           .shop-content {
             width: 100%;
@@ -231,7 +233,7 @@ export default function ShopPage() {
 
           .shop-card-button {
             top: 80%;
-            width: 42%;
+            width: 38%;
           }
 
           .shop-card-button::before {
@@ -239,27 +241,28 @@ export default function ShopPage() {
           }
         }
 
-        /* SMARTPHONE: le due schede restano AFFIANCATE. */
+        /* SMARTPHONE: schede in colonna per mantenerle grandi e leggibili. */
         @media (max-width: 700px) {
           .shop-content {
-            padding: 0 0 34px;
+            padding: 0 0 38px;
           }
 
           .shop-hero {
-            margin-bottom: 5px;
+            margin-bottom: 14px;
           }
 
           .shop-experiences {
-            width: calc(100% - 20px);
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 8px;
+            display: grid;
+            width: calc(100% - 28px);
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
           }
 
           .shop-card {
-            min-width: 0;
-            aspect-ratio: 1.42 / 1;
-            border-width: 1.5px;
-            border-radius: 8px;
+            width: 100%;
+            aspect-ratio: 2.05 / 1;
+            border-width: 2px;
+            border-radius: 13px;
           }
 
           .shop-card-image {
@@ -268,34 +271,12 @@ export default function ShopPage() {
           }
 
           .shop-card-button {
-            top: 79%;
-            width: 58%;
-            aspect-ratio: 4.18 / 1;
-          }
-
-          .shop-card-button::before {
-            inset: 1px;
+            top: 80%;
+            width: 34%;
+            min-width: 112px;
           }
         }
 
-        /* Smartphone molto stretti: mantieni le colonne senza far collassare i pulsanti. */
-        @media (max-width: 380px) {
-          .shop-experiences {
-            width: calc(100% - 16px);
-            gap: 6px;
-          }
-
-          .shop-card {
-            aspect-ratio: 1.28 / 1;
-            border-radius: 7px;
-          }
-
-          .shop-card-button {
-            width: 64%;
-          }
-        }
-
-        /* TABLET VERTICALE: conserva le due colonne. */
         @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
           .shop-content {
             padding-bottom: 50px;
@@ -315,7 +296,6 @@ export default function ShopPage() {
           }
         }
 
-        /* TABLET E SMARTPHONE ORIZZONTALI. */
         @media (max-width: 1024px) and (orientation: landscape) {
           .shop-content {
             padding-bottom: 35px;
@@ -332,6 +312,19 @@ export default function ShopPage() {
 
           .shop-card-button {
             width: 34%;
+          }
+        }
+
+        @media (max-width: 700px) and (orientation: landscape) {
+          .shop-experiences {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            width: calc(100% - 24px);
+            gap: 10px;
+          }
+
+          .shop-card-button {
+            width: 38%;
+            min-width: 0;
           }
         }
 

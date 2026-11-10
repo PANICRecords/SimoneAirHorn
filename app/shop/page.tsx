@@ -11,7 +11,6 @@ export default function ShopPage() {
       <Navbar />
 
       <div className="shop-content">
-        {/* INTESTAZIONE COMPLETA: LOGO, SHOP E SOTTOTITOLO */}
         <header className="shop-hero">
           <Image
             src="/images/shop/shoplogoc.png"
@@ -24,7 +23,6 @@ export default function ShopPage() {
           />
         </header>
 
-        {/* LE DUE ESPERIENZE: SEMPRE AFFIANCATE */}
         <section className="shop-experiences" aria-label="Scegli la tua esperienza">
           <article className="shop-card">
             <Image
@@ -33,7 +31,7 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 1024px) 50vw, 50vw"
+              sizes="(max-width: 700px) 48vw, (max-width: 1024px) 48vw, 50vw"
               className="shop-card-image"
             />
             <Link
@@ -46,7 +44,7 @@ export default function ShopPage() {
                 alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 1024px) 50vw, 50vw"
+                sizes="(max-width: 700px) 28vw, 20vw"
                 className="shop-button-image"
               />
             </Link>
@@ -59,7 +57,7 @@ export default function ShopPage() {
               width={1920}
               height={1080}
               priority
-              sizes="(max-width: 1024px) 50vw, 50vw"
+              sizes="(max-width: 700px) 48vw, (max-width: 1024px) 48vw, 50vw"
               className="shop-card-image"
             />
             <Link
@@ -72,7 +70,7 @@ export default function ShopPage() {
                 alt="Coming Soon"
                 width={1920}
                 height={1080}
-                sizes="(max-width: 1024px) 50vw, 50vw"
+                sizes="(max-width: 700px) 28vw, 20vw"
                 className="shop-button-image"
               />
             </Link>
@@ -98,7 +96,6 @@ export default function ShopPage() {
           box-sizing: border-box;
         }
 
-        /* DESKTOP: impostazioni originali, lasciate invariate. */
         .shop-hero {
           position: relative;
           width: 100%;
@@ -189,8 +186,7 @@ export default function ShopPage() {
           pointer-events: none;
         }
 
-        /* TABLET E MOBILE: il desktop non viene toccato.
-           L'intestazione mostra il PNG intero, senza il ritaglio orizzontale desktop. */
+        /* TABLET: due schede affiancate, con proporzioni compatte. */
         @media (max-width: 1024px) {
           .shop-content {
             width: 100%;
@@ -235,7 +231,7 @@ export default function ShopPage() {
 
           .shop-card-button {
             top: 80%;
-            width: 38%;
+            width: 42%;
           }
 
           .shop-card-button::before {
@@ -243,35 +239,63 @@ export default function ShopPage() {
           }
         }
 
-        /* SMARTPHONE: due schede affiancate, con immagini intere e leggibili. */
+        /* SMARTPHONE: le due schede restano AFFIANCATE. */
         @media (max-width: 700px) {
           .shop-content {
-            padding-bottom: 38px;
+            padding: 0 0 34px;
           }
 
           .shop-hero {
-            margin-bottom: 8px;
+            margin-bottom: 5px;
           }
 
           .shop-experiences {
             width: calc(100% - 20px);
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 7px;
+            gap: 8px;
           }
 
           .shop-card {
-            aspect-ratio: 16 / 9;
+            min-width: 0;
+            aspect-ratio: 1.42 / 1;
             border-width: 1.5px;
-            border-radius: 9px;
+            border-radius: 8px;
+          }
+
+          .shop-card-image {
+            object-fit: cover;
+            object-position: center;
           }
 
           .shop-card-button {
-            top: 78%;
-            width: 43%;
+            top: 79%;
+            width: 58%;
+            aspect-ratio: 4.18 / 1;
+          }
+
+          .shop-card-button::before {
+            inset: 1px;
           }
         }
 
-        /* TABLET VERTICALE: conserva le due colonne e sfrutta la larghezza disponibile. */
+        /* Smartphone molto stretti: mantieni le colonne senza far collassare i pulsanti. */
+        @media (max-width: 380px) {
+          .shop-experiences {
+            width: calc(100% - 16px);
+            gap: 6px;
+          }
+
+          .shop-card {
+            aspect-ratio: 1.28 / 1;
+            border-radius: 7px;
+          }
+
+          .shop-card-button {
+            width: 64%;
+          }
+        }
+
+        /* TABLET VERTICALE: conserva le due colonne. */
         @media (min-width: 701px) and (max-width: 1024px) and (orientation: portrait) {
           .shop-content {
             padding-bottom: 50px;
@@ -291,7 +315,7 @@ export default function ShopPage() {
           }
         }
 
-        /* TABLET E SMARTPHONE ORIZZONTALI: niente ritagli dell'intestazione. */
+        /* TABLET E SMARTPHONE ORIZZONTALI. */
         @media (max-width: 1024px) and (orientation: landscape) {
           .shop-content {
             padding-bottom: 35px;
